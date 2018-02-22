@@ -13,7 +13,6 @@ function displayLessons(lessons) {
 
         lessonButton.addEventListener("click", (function (lesson2) {
             return function () {
-                console.log(lesson2);
                 loadLesson(lesson2);
             };
         })(lesson));
@@ -26,10 +25,26 @@ function loadLesson(lesson) {
 
     var exercises = lesson.exercises;
 
-    for (var j = 0; j < exercises.length; j++) {
-        console.log("here");
-        displayExercise(exercises[j]);
-    }
+    //display the first exercise
+    var currentExerciseNumber = 0;
+    displayExercise(exercises[currentExerciseNumber]);
+
+    //create 'Next' button
+    var nextButton = document.createElement('button');
+    nextButton.innerHTML = "Next";
+    nextButton.addEventListener("click", function () {
+        checkAnswer()
+        currentExerciseNumber++;
+        if (currentExerciseNumber < exercises.length-1)
+            displayExercise(exercises[currentExerciseNumber]);
+        else
+            //TODO call lesson finished
+    });
+
+    var nextButtonDiv = document.createElement('div');
+    nextButtonDiv.setAttribute("class", "nextButton");
+    nextButtonDiv.appendChild(nextButton);
+    mainDiv.appendChild(nextButtonDiv);
 
 }
 

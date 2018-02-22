@@ -4,8 +4,20 @@
     "exercises": [
         {
             "type": "multiChoice",
-            "question": " What's up",
+            "question": "1",
             "answers": [ "nothing", "yes", "no" ],
+            "shuffleAnswers": true
+        },
+        {
+            "type": "multiChoice",
+            "question": " 2 ",
+            "answers": [ "daw", "was", "wad" ],
+            "shuffleAnswers": true
+        },
+        {
+            "type": "multiChoice",
+            "question": " 3 ",
+            "answers": [ "daw", "was", "wad" ],
             "shuffleAnswers": true
         }
     ]
