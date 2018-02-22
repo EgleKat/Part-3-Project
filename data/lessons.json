@@ -1,15 +1,22 @@
 [{
   "lessonName": "dlajbwhfua",
   "lessonID": 1,
-  "exercises": {}
+    "exercises": [
+        {
+            "type": "multiChoice",
+            "question": " What's up",
+            "answers": [ "nothing", "yes", "no" ],
+            "shuffleAnswers": true
+        }
+    ]
 },
 {
   "lessonName": "Declension",
   "lessonID": 2,
-  "exercises": {}
+    "exercises": []
 },
 {
   "lessonName": "More Declension",
   "lessonID": 3,
-  "exercises": {}
+    "exercises": []
 }]

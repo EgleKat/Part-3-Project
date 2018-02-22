@@ -10,8 +10,44 @@ function displayLessons(lessons) {
         var lesson = lessons[i];
         lessonButton.innerHTML = "LESSON " + lesson.lessonID + "\n" + lesson.lessonName;
         lessonButton.className = "btn btn-primary";
-        mainDiv.appendChild(lessonButton);
+
+        lessonButton.addEventListener("click", (function (lesson2) {
+            return function () {
+                console.log(lesson2);
+                loadLesson(lesson2);
+            };
+        })(lesson));
+        exLessDiv.appendChild(lessonButton);
     }
+
+}
+
+function loadLesson(lesson) {
+
+    var exercises = lesson.exercises;
+
+    for (var j = 0; j < exercises.length; j++) {
+        console.log("here");
+        displayExercise(exercises[j]);
+    }
+
+}
+
+function displayExercise(exercise) {
+
+    var exerciseType = exercise.type;
+
+    switch (exerciseType) {
+        case "multiChoice":
+            displayMultipleChoice(exercise.question, exercise.answers, exLessDiv, exercise.shuffleAnswers);
+            break;
+        //case n:
+        //    code block
+        //    break;
+        //default:
+        //    code block
+    } 
+
 
 }
 
