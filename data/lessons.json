@@ -5,19 +5,19 @@
         {
             "type": "multiChoice",
             "question": "1",
-            "answers": [ "nothing", "yes", "no" ],
+            "answers": [ "nothing_correct", "yes", "no" ],
             "shuffleAnswers": true
         },
         {
             "type": "multiChoice",
             "question": " 2 ",
-            "answers": [ "daw", "was", "wad" ],
+            "answers": [ "daw_correct", "was", "wad" ],
             "shuffleAnswers": true
         },
         {
             "type": "multiChoice",
             "question": " 3 ",
-            "answers": [ "daw", "was", "wad" ],
+            "answers": [ "daw_correct", "wut", "fas" ],
             "shuffleAnswers": true
         }
     ]

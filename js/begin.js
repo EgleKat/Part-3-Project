@@ -1,6 +1,8 @@
 var allLessons = readLessonJson();
 var exLessDiv = document.getElementById('change');
 displayLessons(allLessons);
+var finishedLessons = [];
+
 //displayMultipleChoice("what's up", ["nth", "yes", "no"], exLessDiv, true);
 
 
@@ -10,6 +12,12 @@ displayLessons(allLessons);
 
 
 
+
+function finishedLesson(name, id,  exercises) {
+    this.name = name;
+    this.id = id;
+    this.exercises = exercises;
+}
 
 
 function readLessonJson() {
