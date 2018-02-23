@@ -4,6 +4,8 @@ var finishedLessonsCount = 0;
 
 function displayLessons(lessons) {
 
+    exLessDiv.innerHTML = "";
+    
     //Add all the buttons for lessons into the div
     for (var i = 0; i < lessons.length; i++) {
         var lessonButton = document.createElement("button");
@@ -20,13 +22,13 @@ function displayLessons(lessons) {
     }
 
 }
-var currentExerciseNumber = 0;
+var currentExerciseNumber;
 var currentExercise;
 var currentAnswer;
 var correctAnswer;
 var currentUserLesson;
 function loadLesson(lesson) {
-
+    currentExerciseNumber = 0;
     var exercises = lesson.exercises;
     currentUserLesson = new finishedLesson(lesson.lessonName, lesson.lessonID, []);
 
@@ -78,7 +80,7 @@ function validateExercise(exercises) {
     //display next exercise
     currentExerciseNumber++;
     displayExercise(exercises);
-   
+
     //clear current answer
     currentAnswer = undefined;
 }
@@ -183,7 +185,16 @@ function displayMultipleChoice(question, answers, div, shuffleAnswers) {
 }
 function finishLesson(userLesson) {
     currentUserLesson = undefined;
+    currentExercise = undefined;
+    currentAnswer = undefined;
+    correctAnswer = undefined;
+
     finishedLessons.push(userLesson);
     finishedLessonsCount++;
     console.log(finishedLessons);
+
+    mainDiv.removeChild(document.getElementsByClassName("nextButton")[0]);
+
+    displayLessons(allLessons);
+
 }
