@@ -30,15 +30,7 @@ function loadLesson(lesson) {
     var exercises = lesson.exercises;
     currentUserLesson = new finishedLesson(lesson.lessonName, lesson.lessonID, []);
 
-    //define the exercise index    
-    currentExercise = exercises[currentExerciseNumber];
-
-    if (currentExercise.type !== "explanation") {
-        //Extract the correct answer
-        correctAnswer = currentExercise.answers[0];
-    }
-    //display current exercise
-    displayExercise(currentExercise);
+    displayExercise(exercises);
 
 
     //create 'Next' button
@@ -46,7 +38,7 @@ function loadLesson(lesson) {
     nextButton.innerHTML = "Next";
 
     nextButton.addEventListener("click", function () {
-        loadNextExercise(exercises);
+        validateExercise(exercises);
     });
 
     var nextButtonDiv = document.createElement('div');
@@ -55,7 +47,9 @@ function loadLesson(lesson) {
     mainDiv.appendChild(nextButtonDiv);
 
 }
-function loadNextExercise(exercises) {
+
+
+function validateExercise(exercises) {
     console.log(currentAnswer);
     if (currentExercise.type !== "explanation") {
 
@@ -83,6 +77,13 @@ function loadNextExercise(exercises) {
 
     //display next exercise
     currentExerciseNumber++;
+    displayExercise(exercises);
+   
+    //clear current answer
+    currentAnswer = undefined;
+}
+
+function displayExercise(exercises) {
 
     if (currentExerciseNumber < exercises.length) {
         currentExercise = exercises[currentExerciseNumber];
@@ -91,14 +92,13 @@ function loadNextExercise(exercises) {
             //Extract the correct answer
             correctAnswer = currentExercise.answers[0];
         }
-        displayExercise(currentExercise);
+        displaySpecificExercise(currentExercise);
 
     } else
         finishLesson(currentUserLesson);
 
-    //clear current answer
-    currentAnswer = undefined;
 }
+
 function checkAnswer(correctAnswer) {
     //current answer is stored globally
     if (correctAnswer == currentAnswer)
@@ -106,7 +106,7 @@ function checkAnswer(correctAnswer) {
     else return false;
 }
 
-function displayExercise(exercise) {
+function displaySpecificExercise(exercise) {
 
     var exerciseType = exercise.type;
 
