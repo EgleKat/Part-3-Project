@@ -1,12 +1,11 @@
 var mainDiv = document.getElementById('content');
 var userName;
 var finishedLessonsCount = 0;
-var currentAnswer;
 
 function displayLessons(lessons) {
 
     //Add all the buttons for lessons into the div
-    for (var i=0; i < lessons.length; i++) {
+    for (var i = 0; i < lessons.length; i++) {
         var lessonButton = document.createElement("button");
         var lesson = lessons[i];
         lessonButton.innerHTML = "LESSON " + lesson.lessonID + "\n" + lesson.lessonName;
@@ -21,48 +20,33 @@ function displayLessons(lessons) {
     }
 
 }
-
+var currentExerciseNumber = 0;
+var currentExercise;
+var currentAnswer;
+var correctAnswer;
+var currentUserLesson;
 function loadLesson(lesson) {
 
     var exercises = lesson.exercises;
-    var userLesson = new finishedLesson(lesson.lessonName, lesson.lessonID,[]);
+    currentUserLesson = new finishedLesson(lesson.lessonName, lesson.lessonID, []);
 
     //define the exercise index    
-    var currentExerciseNumber = 0;
-    var currentExercise = exercises[currentExerciseNumber];
+    currentExercise = exercises[currentExerciseNumber];
 
-    //Extract the correct answer
-    var correctAnswer = currentExercise.answers[0];
-
+    if (currentExercise.type !== "explanation") {
+        //Extract the correct answer
+        correctAnswer = currentExercise.answers[0];
+    }
     //display current exercise
     displayExercise(currentExercise);
 
-    
+
     //create 'Next' button
     var nextButton = document.createElement('button');
     nextButton.innerHTML = "Next";
+
     nextButton.addEventListener("click", function () {
-        var isUserCorrect = checkAnswer(correctAnswer);
-        userLesson.exercises.push({
-            "exercise"  : currentExerciseNumber,
-            "answer"    : currentAnswer,
-            "correct"   : isUserCorrect
-        });
-        currentExerciseNumber++;
-
-        console.log(isUserCorrect);
-        //display next exercise
-        if (currentExerciseNumber < exercises.length) {
-
-            currentExercise = exercises[currentExerciseNumber];
-            correctAnswer = currentExercise.answers[0];
-            displayExercise(currentExercise);
-
-        }else
-            finishLesson(userLesson);
-
-        //clear current answer
-        currentAnswer = undefined;
+        loadNextExercise(exercises);
     });
 
     var nextButtonDiv = document.createElement('div');
@@ -71,7 +55,50 @@ function loadLesson(lesson) {
     mainDiv.appendChild(nextButtonDiv);
 
 }
+function loadNextExercise(exercises) {
+    console.log(currentAnswer);
+    if (currentExercise.type !== "explanation") {
 
+        //If the user didn't select any option
+        if (typeof currentAnswer !== 'undefined') {
+
+            var isUserCorrect = checkAnswer(correctAnswer);
+            currentUserLesson.exercises.push({
+                "exercise": currentExerciseNumber,
+                "answer": currentAnswer,
+                "correct": isUserCorrect
+            });
+
+            console.log(isUserCorrect);
+        }
+        else {
+            return;
+        }
+    } else if (currentExercise.type === "explanation") {
+        currentUserLesson.exercises.push({
+            "exercise": currentExerciseNumber
+        });
+
+    }
+
+    //display next exercise
+    currentExerciseNumber++;
+
+    if (currentExerciseNumber < exercises.length) {
+        currentExercise = exercises[currentExerciseNumber];
+
+        if (currentExercise.type !== "explanation") {
+            //Extract the correct answer
+            correctAnswer = currentExercise.answers[0];
+        }
+        displayExercise(currentExercise);
+
+    } else
+        finishLesson(currentUserLesson);
+
+    //clear current answer
+    currentAnswer = undefined;
+}
 function checkAnswer(correctAnswer) {
     //current answer is stored globally
     if (correctAnswer == currentAnswer)
@@ -87,12 +114,13 @@ function displayExercise(exercise) {
         case "multiChoice":
             displayMultipleChoice(exercise.question, exercise.answers, exLessDiv, exercise.shuffleAnswers);
             break;
-        //case n:
+        case "explanation":
+            displayMultipleChoice(exercise.question, [], exLessDiv, false);
         //    code block
         //    break;
         //default:
         //    code block
-    } 
+    }
 
 
 }
@@ -148,12 +176,14 @@ function displayMultipleChoice(question, answers, div, shuffleAnswers) {
         oneAnswerDiv.appendChild(radioInput);
         oneAnswerDiv.appendChild(label);
         answerDiv.appendChild(oneAnswerDiv);
-    }    
+    }
 
     div.appendChild(answerDiv);
 
 }
 function finishLesson(userLesson) {
+    currentUserLesson = undefined;
     finishedLessons.push(userLesson);
+    finishedLessonsCount++;
     console.log(finishedLessons);
 }

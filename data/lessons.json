@@ -4,20 +4,19 @@
     "exercises": [
         {
             "type": "multiChoice",
-            "question": "1",
-            "answers": [ "nothing_correct", "yes", "no" ],
+            "question": "Hello",
+            "answers": [ "Labas", "yes", "no" ],
             "shuffleAnswers": true
         },
         {
-            "type": "multiChoice",
-            "question": " 2 ",
-            "answers": [ "daw_correct", "was", "wad" ],
-            "shuffleAnswers": true
+            "type": "explanation",
+            "question": "Let's say hi in Lithuanian",
+            "explanation" :  "Hi - Labas"
         },
         {
             "type": "multiChoice",
-            "question": " 3 ",
-            "answers": [ "daw_correct", "wut", "fas" ],
+            "question": "Tu",
+            "answers": [ "You", "wut", "fas" ],
             "shuffleAnswers": true
         }
     ]
