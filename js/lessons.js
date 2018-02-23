@@ -52,7 +52,7 @@ function loadLesson(lesson) {
 
 
 function validateExercise(exercises) {
-    console.log(currentAnswer);
+    console.log(currentExercise.type);
     if (currentExercise.type !== "explanation") {
 
         //If the user didn't select any option
@@ -68,6 +68,7 @@ function validateExercise(exercises) {
             console.log(isUserCorrect);
         }
         else {
+            displayInfoAlert("You have to select an answer to proceed");
             return;
         }
     } else if (currentExercise.type === "explanation") {
@@ -117,7 +118,10 @@ function displaySpecificExercise(exercise) {
             displayMultipleChoice(exercise.question, exercise.answers, exLessDiv, exercise.shuffleAnswers);
             break;
         case "explanation":
-            displayMultipleChoice(exercise.question, [], exLessDiv, false);
+            displayExplanation(exercise.question, exercise.explanation, exLessDiv);
+            break;
+        case "inputText":
+            displayInputText(exercise.question, exercise.answers, exLessDiv);
         //    code block
         //    break;
         //default:
@@ -127,74 +131,38 @@ function displaySpecificExercise(exercise) {
 
 }
 
-//the question is a string, answers is an array of strings, where the first element is the correct answer
-function displayMultipleChoice(question, answers, div, shuffleAnswers) {
-    //Loading Multiple Choice
-    div.innerHTML = "";
-
-    //Add a question
-    var questionLabel = document.createElement("h3");
-    questionLabel.innerHTML = question;
-    div.appendChild(questionLabel);
-
-    //Create the answer div
-    var answerDiv = document.createElement("div");
-
-    //TODO delete this
-    //Add input to answerDiv
-    var correctAnswer = answers[0];
-
-
-    //shuffle the answers
-    if (shuffleAnswers) {
-        answers = shuffle(answers);
-    }
-
-    //add all of the answers as radio buttons
-    for (var i = 0; i < answers.length; i++) {
-
-        var oneAnswerDiv = document.createElement("p");
-
-        var answer = answers[i];
-        //create radio button
-        var radioInput = document.createElement('input');
-        radioInput.setAttribute('type', 'radio');
-        radioInput.setAttribute('name', question);
-        radioInput.setAttribute('id', i);
-        radioInput.setAttribute('value', answer);
-
-        //Add a listener to the radio button
-        radioInput.onclick = function () {
-            currentAnswer = this.value;
-        }
-
-        //add label
-        var label = document.createElement('label');
-        label.setAttribute("for", i);
-        label.innerHTML = answer;
-
-
-        //add everything to the div
-        oneAnswerDiv.appendChild(radioInput);
-        oneAnswerDiv.appendChild(label);
-        answerDiv.appendChild(oneAnswerDiv);
-    }
-
-    div.appendChild(answerDiv);
-
-}
 function finishLesson(userLesson) {
+    //clear global variables
     currentUserLesson = undefined;
     currentExercise = undefined;
     currentAnswer = undefined;
     correctAnswer = undefined;
 
+    //add user's progress to overall progress
     finishedLessons.push(userLesson);
     finishedLessonsCount++;
-    console.log(finishedLessons);
 
+    //remove the next button
     mainDiv.removeChild(document.getElementsByClassName("nextButton")[0]);
 
+    //display lesson menu
     displayLessons(allLessons);
 
+}
+
+function displayInfoAlert(text) {
+
+    //create div
+    var alertDiv = document.createElement("div");
+    alertDiv.setAttribute("class", "alert alert-info fade show");
+    alertDiv.setAttribute("role", "alert");
+
+    var t = document.createTextNode(text);
+    alertDiv.appendChild (t);
+
+    exLessDiv.appendChild(alertDiv);
+
+    window.setTimeout(function () {
+        $(".alert").alert('close');
+    }, 2000);
 }

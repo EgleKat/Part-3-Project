@@ -1,33 +1,35 @@
-[{
-  "lessonName": "dlajbwhfua",
-  "lessonID": 1,
-    "exercises": [
-        {
-            "type": "multiChoice",
-            "question": "Hello",
-            "answers": [ "Labas", "yes", "no" ],
-            "shuffleAnswers": true
-        },
-        {
-            "type": "explanation",
-            "question": "Let's say hi in Lithuanian",
-            "explanation" :  "Hi - Labas"
-        },
-        {
-            "type": "multiChoice",
-            "question": "Tu",
-            "answers": [ "You", "wut", "fas" ],
-            "shuffleAnswers": true
-        }
-    ]
-},
-{
-  "lessonName": "Declension",
-  "lessonID": 2,
-    "exercises": []
-},
-{
-  "lessonName": "More Declension",
-  "lessonID": 3,
-    "exercises": []
-}]
+[
+    {
+        "lessonName": "dlajbwhfua",
+        "lessonID": 1,
+        "exercises": [
+            {
+                "type": "explanation",
+                "question": "Let's say hi in Lithuanian",
+                "explanation": "Hi/Hello - Labas<br>Polite/Plural - Sveiki<br>Female/Male - Sveika/Sveikas"
+            },
+            {
+                "type": "inputText",
+                "question": "Write: 'Hello'",
+                "answers": [ "Labas", "Sveiki", "Sveikas", "Sveika" ]
+            },
+
+            {
+                "type": "multiChoice",
+                "question": "Tu",
+                "answers": [ "You", "wut", "fas" ],
+                "shuffleAnswers": true
+            }
+        ]
+    },
+    {
+        "lessonName": "Declension",
+        "lessonID": 2,
+        "exercises": []
+    },
+    {
+        "lessonName": "More Declension",
+        "lessonID": 3,
+        "exercises": []
+    }
+]
