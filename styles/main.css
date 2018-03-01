@@ -38,7 +38,7 @@ body {
     border-top-right-radius: 5px;
 }
 
-.nextButton {
+.bottomButton {
     position: absolute;
     bottom: 0;
 }

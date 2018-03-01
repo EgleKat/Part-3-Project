@@ -2,6 +2,7 @@ var mainDiv = document.getElementById('content');
 var userName;
 var finishedLessonsCount = 0;
 var isCurrentPaneExercise = false;
+var correctExercises = 0;
 
 function displayLessons(lessons) {
 
@@ -45,7 +46,7 @@ function loadLesson(lesson) {
     });
 
     var nextButtonDiv = document.createElement('div');
-    nextButtonDiv.setAttribute("class", "nextButton");
+    nextButtonDiv.setAttribute("class", "bottomButton");
     nextButtonDiv.appendChild(nextButton);
     mainDiv.appendChild(nextButtonDiv);
 
@@ -128,7 +129,7 @@ function displayExercise(exercises) {
         displaySpecificExercise(currentExercise);
 
     } else
-        finishLesson(currentUserLesson);
+        finishLesson(currentUserLesson, exercises.length);
 
 }
 
@@ -171,18 +172,17 @@ function displaySpecificExercise(exercise) {
 
 }
 
-function finishLesson(userLesson) {
+function finishLesson(userLesson, noOfExercises) {
 
 
     //add user's progress to overall progress
     finishedLessons.push(userLesson);
     finishedLessonsCount++;
 
-    //remove the next button
-    mainDiv.removeChild(document.getElementsByClassName("nextButton")[0]);
+    //remove the next button child
+    mainDiv.removeChild(document.getElementsByClassName("bottomButton")[0]);
 
-    //display lesson menu
-    displayLessons(allLessons);
+    displayLessonStats(noOfExercises);
 
     //clear global variables
     currentUserLesson = undefined;
@@ -191,6 +191,27 @@ function finishLesson(userLesson) {
     correctAnswer = undefined;
     userLesson = undefined;
 
+}
+
+function displayLessonStats(noOfExercises) {
+    //Display correct out of all exercises
+    exLessDiv.innerHTML = "";
+    exLessDiv.innerHTML = "Good Job<br>" + correctExercises + "/" + noOfExercises;
+
+    //add a button to finish lesson
+    var buttonDiv = document.createElement('div');
+    buttonDiv.setAttribute("class", "bottomButton");
+
+    var finishButton = document.createElement('button');
+    finishButton.innerHTML = "OK";
+
+    finishButton.addEventListener("click", function () {
+        //display lesson menu
+        displayLessons(allLessons);
+        mainDiv.removeChild(document.getElementsByClassName("bottomButton")[0]);
+    });
+    buttonDiv.appendChild(finishButton);
+    mainDiv.appendChild(buttonDiv);
 }
 
 function displayInfoAlert(text) {
@@ -212,6 +233,9 @@ function displayInfoAlert(text) {
 
 function displayAnswerMessage(isUserCorrect, div) {
     isCurrentPaneExercise = false;
+    if (isUserCorrect) {
+        correctExercises++;
+    }
 
     div.innerHTML = "";
 
@@ -222,7 +246,7 @@ function displayAnswerMessage(isUserCorrect, div) {
 
     //Create the answer div
     var correctAnswerDiv = document.createElement("div");
-    correctAnswerDiv.innerHTML = "Your answer - " + currentAnswer + "<br>Possible answers - " +  correctAnswer;
+    correctAnswerDiv.innerHTML = "Your answer - " + currentAnswer + "<br>Possible answers - " + correctAnswer;
 
 
 
