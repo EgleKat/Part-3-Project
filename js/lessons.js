@@ -1,5 +1,4 @@
 var mainDiv = document.getElementById('content');
-var userName;
 var finishedLessonsCount = 0;
 var isCurrentPaneExercise = false;  //exercise - true, validation - false
 var correctExercises = 0;
@@ -36,7 +35,7 @@ var currentUserLesson;
 function loadLesson(lesson) {
     currentExerciseNumber = 0;
     var exercises = lesson.exercises;
-    currentUserLesson = new finishedLesson(lesson.lessonName, lesson.lessonID, []);
+    currentUserLesson = new finishedLesson(lesson.lessonName, lesson.lessonID, [], 0, 0);
 
     displayExercise(exercises);
 
@@ -181,8 +180,11 @@ function finishLesson(userLesson) {
 
 
     //add user's progress to overall progress
-    finishedLessons.push(userLesson);
+    userLesson.totalCorrect = correctExercises;
+    userLesson.totalExCount = shownExNumber;
+    finishedLessons.lessons.push(userLesson);
     finishedLessonsCount++;
+    console.log(JSON.stringify(finishedLessons));
 
     //remove the next button child
     mainDiv.removeChild(document.getElementsByClassName("bottomButton")[0]);
@@ -220,6 +222,8 @@ function displayLessonStats() {
     });
     buttonDiv.appendChild(finishButton);
     mainDiv.appendChild(buttonDiv);
+
+
 }
 
 function displayInfoAlert(text) {

@@ -1,11 +1,14 @@
 var allLessons = readLessonJson();
 var exLessDiv = document.getElementById('change');
 displayLessonMenu(allLessons);
-var finishedLessons = [];
+var userName = "Alexandria";
+var finishedLessons = { "userName": userName, "lessons": [] };
+
 
 
 //on 'Enter' click the button
 $(document).on('keyup', function (e) {
+    //if the user is on the lesson menu - don't register click
     if (!onMenu) {
         var key = e.which;
         if (key == 13)  // the enter key ascii code
@@ -24,10 +27,12 @@ $(document).on('keyup', function (e) {
 
 
 
-function finishedLesson(name, id, exercises) {
+function finishedLesson(name, id, exercises, totalCorrect, totalExCount) {
     this.name = name;
     this.id = id;
     this.exercises = exercises;
+    this.totalCorrect = totalCorrect;
+    this.totalExCount = totalExCount;
 }
 
 
