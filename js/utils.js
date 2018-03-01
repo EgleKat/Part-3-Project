@@ -19,3 +19,13 @@ function shuffle(array) {
 
     return array;
 }
+function searchKeyPress(e) {
+    console.log("PRESSED KEY");
+    // look for window.event in case event isn't passed in
+    e = e || window.event;
+    if (e.keyCode == 13) {
+        document.getElementByClassName('submit').click();
+        return false;
+    }
+    return true;
+}

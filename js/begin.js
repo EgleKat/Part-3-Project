@@ -1,9 +1,19 @@
 var allLessons = readLessonJson();
 var exLessDiv = document.getElementById('change');
-displayLessons(allLessons);
+displayLessonMenu(allLessons);
 var finishedLessons = [];
 
-//displayMultipleChoice("what's up", ["nth", "yes", "no"], exLessDiv, true);
+
+//on 'Enter' click the button
+$(document).on('keyup', function (e) {
+    if (!onMenu) {
+        var key = e.which;
+        if (key == 13)  // the enter key ascii code
+        {
+            document.getElementsByClassName('submit')[0].click();
+        }
+    }
+});
 
 
 
@@ -13,7 +23,8 @@ var finishedLessons = [];
 
 
 
-function finishedLesson(name, id,  exercises) {
+
+function finishedLesson(name, id, exercises) {
     this.name = name;
     this.id = id;
     this.exercises = exercises;

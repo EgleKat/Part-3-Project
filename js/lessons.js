@@ -1,12 +1,14 @@
 var mainDiv = document.getElementById('content');
 var userName;
 var finishedLessonsCount = 0;
-var isCurrentPaneExercise = false;
+var isCurrentPaneExercise = false;  //exercise - true, validation - false
 var correctExercises = 0;
 var shownExNumber = 0;
+var onMenu = true;
 
-function displayLessons(lessons) {
+function displayLessonMenu(lessons) {
 
+    onMenu = true;
     exLessDiv.innerHTML = "";
 
     //Add all the buttons for lessons into the div
@@ -19,6 +21,7 @@ function displayLessons(lessons) {
         lessonButton.addEventListener("click", (function (lesson2) {
             return function () {
                 loadLesson(lesson2);
+                onMenu = false;
             };
         })(lesson));
         exLessDiv.appendChild(lessonButton);
@@ -40,6 +43,7 @@ function loadLesson(lesson) {
 
     //create 'Next' button
     var nextButton = document.createElement('button');
+    nextButton.setAttribute("class", "submit");
     nextButton.innerHTML = "Next";
 
     nextButton.addEventListener("click", function () {
@@ -50,7 +54,7 @@ function loadLesson(lesson) {
     nextButtonDiv.setAttribute("class", "bottomButton");
     nextButtonDiv.appendChild(nextButton);
     mainDiv.appendChild(nextButtonDiv);
-
+   
 }
 
 
@@ -204,11 +208,12 @@ function displayLessonStats() {
     buttonDiv.setAttribute("class", "bottomButton");
 
     var finishButton = document.createElement('button');
+    finishButton.setAttribute("class", "submit");
     finishButton.innerHTML = "OK";
 
     finishButton.addEventListener("click", function () {
         //display lesson menu
-        displayLessons(allLessons);
+        displayLessonMenu(allLessons);
         correctExercises = 0;
         shownExNumber = 0;
         mainDiv.removeChild(document.getElementsByClassName("bottomButton")[0]);
