@@ -55,7 +55,7 @@ function displayMultipleChoice(question, answers, div, shuffleAnswers) {
 }
 
 function displayExplanation(question, explanation, div) {
-    
+
     div.innerHTML = "";
 
     //Add the title
@@ -73,6 +73,30 @@ function displayExplanation(question, explanation, div) {
 }
 
 function displayInputText(question, answers, div) {
+
+    div.innerHTML = "";
+    //Add the question
+    var questionLabel = document.createElement("h3");
+    questionLabel.innerHTML = question;
+    div.appendChild(questionLabel);
+
+
+    //Create the text div
+    var textInputDiv = document.createElement("div");
+
+    //create text input field
+    var input = document.createElement("INPUT");
+    input.setAttribute("id", "exTextInput");
+    input.setAttribute("type", "text");
+
+    input.onchange = function () {
+        currentAnswer = input.value.trim();
+    }
+    input.onpaste = function () {
+        input.value = "";
+        displayInfoAlert("You shouldn't paste answers in! That's cheating! ");
+    }
+    div.appendChild(input);
 
 }
 
