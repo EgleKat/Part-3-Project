@@ -3,6 +3,7 @@ var userName;
 var finishedLessonsCount = 0;
 var isCurrentPaneExercise = false;
 var correctExercises = 0;
+var shownExNumber = 0;
 
 function displayLessons(lessons) {
 
@@ -57,7 +58,7 @@ function validateExercise(exercises) {
     //check if the main div is displaying an exercise or an answer validation
     if (isCurrentPaneExercise && currentExercise.type !== "explanation") {
         console.log(currentExercise.type);
-
+        shownExNumber++;
 
         //if the user has chosen an answer
         if (typeof currentAnswer !== 'undefined') {
@@ -129,7 +130,7 @@ function displayExercise(exercises) {
         displaySpecificExercise(currentExercise);
 
     } else
-        finishLesson(currentUserLesson, exercises.length);
+        finishLesson(currentUserLesson);
 
 }
 
@@ -172,7 +173,7 @@ function displaySpecificExercise(exercise) {
 
 }
 
-function finishLesson(userLesson, noOfExercises) {
+function finishLesson(userLesson) {
 
 
     //add user's progress to overall progress
@@ -182,7 +183,7 @@ function finishLesson(userLesson, noOfExercises) {
     //remove the next button child
     mainDiv.removeChild(document.getElementsByClassName("bottomButton")[0]);
 
-    displayLessonStats(noOfExercises);
+    displayLessonStats();
 
     //clear global variables
     currentUserLesson = undefined;
@@ -193,10 +194,10 @@ function finishLesson(userLesson, noOfExercises) {
 
 }
 
-function displayLessonStats(noOfExercises) {
+function displayLessonStats() {
     //Display correct out of all exercises
     exLessDiv.innerHTML = "";
-    exLessDiv.innerHTML = "Good Job<br>" + correctExercises + "/" + noOfExercises;
+    exLessDiv.innerHTML = "Good Job<br>" + correctExercises + "/" + shownExNumber;
 
     //add a button to finish lesson
     var buttonDiv = document.createElement('div');
@@ -208,6 +209,8 @@ function displayLessonStats(noOfExercises) {
     finishButton.addEventListener("click", function () {
         //display lesson menu
         displayLessons(allLessons);
+        correctExercises = 0;
+        shownExNumber = 0;
         mainDiv.removeChild(document.getElementsByClassName("bottomButton")[0]);
     });
     buttonDiv.appendChild(finishButton);
