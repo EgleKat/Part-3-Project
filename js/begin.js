@@ -1,5 +1,6 @@
 var allLessons = readLessonJson();
 var exLessDiv = document.getElementById('change');
+displayExplanationMenu();
 displayLessonMenu(allLessons);
 var userName = "Alexandria";
 var finishedLessons = { "userName": userName, "lessons": [] };
@@ -48,4 +49,12 @@ function readLessonJson() {
 
     lessonRequest.send();
     return lessons;
+}
+
+function displayExplanationMenu() {
+    //create button
+
+    var explanationMenuDiv = document.createElement("div");
+    mainDiv.appendChild(explanationMenuDiv);
+
 }

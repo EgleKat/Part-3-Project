@@ -2,32 +2,20 @@ body {
     background-color: linen;
 }
 
-#content {
-    width: 800px;
-    height: 500px;
-    align-content: center;
-    position: absolute;
-    margin: auto;
-    top: 5%;
-    right: 5%;
-    left: 5%;
-    border-radius: 3px;
-}
-
 .box {
     border: 2px solid #0094ff;
 }
 
-.box h2 {
-    background: #0094ff;
-    color: white;
-    padding: 10px;
-}
+    .box h2 {
+        background: #0094ff;
+        color: white;
+        padding: 10px;
+    }
 
-.box p {
-    color: #333;
-    padding: 10px;
- }
+    .box p {
+        color: #333;
+        padding: 10px;
+    }
 
 .box {
     -moz-border-radius-topright: 5px;
@@ -38,7 +26,34 @@ body {
     border-top-right-radius: 5px;
 }
 
+.grid-container {
+    display: grid;
+    /*grid-gap: 1px;*/
+    grid-template-areas: 'main main main explanationMenu explanationMenu';
+    /*background-color: #2196F3;*/
+    padding: 10px;
+    width: 800px;
+    height: 500px;
+    /*align-content: center;*/
+    position: absolute;
+    margin: auto;
+    top: 5%;
+    right: 5%;
+    left: 5%;
+    border-radius: 3px;
+}
+
+.item1 {
+    grid-area: main;
+
+}
+
+.item2 {
+    grid-area: explanationMenu;
+}
+
+
 .bottomButton {
     position: absolute;
-    bottom: 0;
+    bottom: 20px;
 }

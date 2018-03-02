@@ -14,7 +14,7 @@ function displayLessonMenu(lessons) {
     for (var i = 0; i < lessons.length; i++) {
         var lessonButton = document.createElement("button");
         var lesson = lessons[i];
-        lessonButton.innerHTML = "LESSON " + lesson.lessonID + "\n" + lesson.lessonName;
+        lessonButton.innerHTML = "LESSON " + lesson.lessonID + "<br />" + lesson.lessonName;
         lessonButton.className = "btn btn-primary";
 
         lessonButton.addEventListener("click", (function (lesson2) {
