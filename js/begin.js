@@ -1,7 +1,7 @@
 var allLessons = readLessonJson();
 var exLessDiv = document.getElementById('change');
-addNewExplanation('SAYHI', 'LABAS');
 var userName = "Alexandria";
+displayLessonMenu(allLessons);
 var finishedLessons = { "userName": userName, "lessons": [] };
 
 
@@ -50,6 +50,10 @@ function readLessonJson() {
     return lessons;
 }
 
+/**
+ * @param {String} heading the heading/title of the explanation
+ * @param {String} value the explanation string
+ */
 function addNewExplanation(heading, value) {
 
     var explanationMenuDiv = document.getElementById("explanationMenu");
