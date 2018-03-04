@@ -32,7 +32,7 @@ body {
     grid-template-areas: 'main main main explanationMenu explanationMenu';
     /*background-color: #2196F3;*/
     padding: 10px;
-    width: 800px;
+    width: 1000px;
     height: 500px;
     /*align-content: center;*/
     position: absolute;
