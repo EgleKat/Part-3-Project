@@ -94,13 +94,15 @@ function validateExercise(exercises) {
         }
 
     }
-    //if it's a validation message, display next exercise 
+    //if it's a validation message, display next exercise, add it to the hint list
     else {
         //if it is an explanation, log it
         if (currentExercise.type === "explanation") {
             currentUserLesson.exercises.push({
                 "exercise": currentExerciseNumber
             });
+            addNewExplanation(currentExercise.question, currentExercise.explanation);
+
         }
         //display next exercise
         currentExerciseNumber++;
