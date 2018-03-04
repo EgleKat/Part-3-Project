@@ -4,6 +4,9 @@ var isCurrentPaneExercise = false;  //exercise - true, validation - false
 var correctExercises = 0;
 var shownExNumber = 0;
 var onMenu = true;
+var numberOfHintsUsed = 0;
+var numberOfMaxHints;
+
 
 function displayLessonMenu(lessons) {
 
@@ -33,12 +36,13 @@ var currentAnswer;
 var correctAnswer;
 var currentUserLesson;
 function loadLesson(lesson) {
+    numberOfMaxHints = 3;
     currentExerciseNumber = 0;
     var exercises = lesson.exercises;
     currentUserLesson = new finishedLesson(lesson.lessonName, lesson.lessonID, [], 0, 0);
 
     displayExercise(exercises);
-
+    addHintEvents();
 
     //create 'Next' button
     var nextButton = document.createElement('button');
@@ -56,7 +60,8 @@ function loadLesson(lesson) {
    
 }
 
-
+function addHintEvents() {
+}
 function validateExercise(exercises) {
     //check if the main div is displaying an exercise or an answer validation
     if (isCurrentPaneExercise && currentExercise.type !== "explanation") {

@@ -74,6 +74,9 @@ function addNewExplanation(heading, value) {
     link.setAttribute("data-toggle", "collapse");
     link.setAttribute("href", "#" + heading + "Ex");
     link.innerHTML = heading;
+    link.addEventListener("click", (function (e) {
+        addHintEvents(this,e);
+    }));
 
     //content div
     var explDiv = document.createElement("div");
@@ -95,4 +98,21 @@ function addNewExplanation(heading, value) {
     headingElement.appendChild(link);
 
     explDiv.appendChild(explContentDiv);
+}
+
+function addHintEvents(link,e) {
+    if (onMenu) {
+        console.log("in menu");
+
+        //if the user is in a lesson
+    } else {
+        console.log("not in menu");
+        if (numberOfHintsUsed <= numberOfMaxHints) {
+            numberOfHintsUsed++;
+        } else {
+            e.stopPropagation();
+            //TODO SHOW AN ALERT
+        }
+        
+    }
 }
