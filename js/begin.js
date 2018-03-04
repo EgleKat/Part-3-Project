@@ -1,7 +1,6 @@
 var allLessons = readLessonJson();
 var exLessDiv = document.getElementById('change');
-displayExplanationMenu();
-displayLessonMenu(allLessons);
+addNewExplanation('SAYHI', 'LABAS');
 var userName = "Alexandria";
 var finishedLessons = { "userName": userName, "lessons": [] };
 
@@ -51,10 +50,45 @@ function readLessonJson() {
     return lessons;
 }
 
-function displayExplanationMenu() {
-    //create button
+function addNewExplanation(heading, value) {
 
-    var explanationMenuDiv = document.createElement("div");
-    mainDiv.appendChild(explanationMenuDiv);
+    var explanationMenuDiv = document.getElementById("explanationMenu");
+    //create, name card div
+    var cardDiv = document.createElement("div");
+    cardDiv.setAttribute("class", "card");
 
+    //heading div
+    var headingDiv = document.createElement("div");
+    headingDiv.setAttribute("class", "card-header");
+    headingDiv.setAttribute("id", heading);
+
+    var headingElement = document.createElement("h5");
+    headingElement.setAttribute("class", "mb-0");
+
+    //create link
+    var link = document.createElement("a");
+    link.setAttribute("data-toggle", "collapse");
+    link.setAttribute("href", "#" + heading + "Ex");
+    link.innerHTML = heading;
+
+    //content div
+    var explDiv = document.createElement("div");
+    explDiv.setAttribute("class", "collapse hide");
+    explDiv.setAttribute("id", heading + "Ex");
+
+    //card block div
+    var explContentDiv = document.createElement("div");
+    explContentDiv.setAttribute("class", "card-block");
+    explContentDiv.innerHTML = value;
+
+
+    //add everything to divs
+    explanationMenuDiv.appendChild(cardDiv);
+    cardDiv.appendChild(headingDiv);
+    cardDiv.appendChild(explDiv);
+
+    headingDiv.appendChild(headingElement);
+    headingElement.appendChild(link);
+
+    explDiv.appendChild(explContentDiv);
 }
