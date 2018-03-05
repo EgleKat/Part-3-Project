@@ -11,7 +11,7 @@ function displayLessonMenu(lessons) {
 
     onMenu = true;
     exLessDiv.innerHTML = "";
-
+    changeMainHeading("Labas, " + userName);
     //Add all the buttons for lessons into the div
     for (var i = 0; i < lessons.length; i++) {
         var lessonButton = document.createElement("button");
@@ -38,7 +38,7 @@ function loadLesson(lesson) {
     numberOfMaxHints = 3;
     currentExerciseNumber = 0;
     changeHintHeading();
-
+    changeMainHeading(lesson.lessonName);
     var exercises = lesson.exercises;
     currentUserLesson = new finishedLesson(lesson.lessonName, lesson.lessonID, [], 0, 0);
 
@@ -65,10 +65,11 @@ function validateExercise(exercises) {
     //check if the main div is displaying an exercise or an answer validation
     if (isCurrentPaneExercise && currentExercise.type !== "explanation") {
         console.log(currentExercise.type);
-        shownExNumber++;
 
         //if the user has chosen an answer
         if (typeof currentAnswer !== 'undefined') {
+            shownExNumber++;
+
             //check the correct answer based on the exercise type
             switch (currentExercise.type) {
                 case "inputText":

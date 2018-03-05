@@ -142,3 +142,10 @@ function changeHintHeading() {
         heading.innerHTML = ("Hints:   " + (numberOfMaxHints - usedHintsPerLesson.length) + "  left");
     }
 }
+
+function changeMainHeading(value) {
+    var div = document.getElementById("content");
+    var heading = div.children[0];
+    heading.innerHTML = value;
+
+}
