@@ -55,6 +55,15 @@ function readLessonJson() {
  * @param {String} value the explanation string
  */
 function addNewExplanation(heading, value) {
+
+    //If the explanation already exists, break out of the function
+    for (var i=0; i < allHints.length; i++) {
+        if (allHints[i] === heading)
+            return;
+    }
+
+    allHints.push(heading);
+
     //hide the primary message
     document.getElementById("primaryExplanation").classList.add("d-none");
     var explanationMenuDiv = document.getElementById("explanationMenu");

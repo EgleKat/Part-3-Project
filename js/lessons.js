@@ -6,6 +6,7 @@ var shownExNumber = 0;
 var onMenu = true;
 var numberOfMaxHints;
 var usedHintsPerLesson = [];//an array of strings that represent which hints have been clicked on by the user
+var allHints = [];
 
 function displayLessonMenu(lessons) {
 
