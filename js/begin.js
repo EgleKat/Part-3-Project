@@ -55,7 +55,8 @@ function readLessonJson() {
  * @param {String} value the explanation string
  */
 function addNewExplanation(heading, value) {
-
+    //hide the primary message
+    document.getElementById("primaryExplanation").classList.add("d-none");
     var explanationMenuDiv = document.getElementById("explanationMenu");
     //create, name card div
     var cardDiv = document.createElement("div");
@@ -121,10 +122,23 @@ function addHintEvents(link, e) {
         if (usedHintsPerLesson.length < numberOfMaxHints) {
             usedHintsPerLesson.push(link.innerHTML);
             console.log("added new hint" + usedHintsPerLesson.length);
+            changeHintHeading();
         } else {
             e.stopPropagation();
             //TODO SHOW AN ALERT
         }
 
+    }
+}
+
+
+function changeHintHeading() {
+    var div = document.getElementById("explanationMenu");
+    var heading = div.children[0];
+
+    if (onMenu)
+        heading.innerHTML = "Recap";
+    else {
+        heading.innerHTML = ("Hints:   " + (numberOfMaxHints - usedHintsPerLesson.length) + "  left");
     }
 }

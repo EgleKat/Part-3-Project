@@ -21,8 +21,8 @@ function displayLessonMenu(lessons) {
 
         lessonButton.addEventListener("click", (function (lesson2) {
             return function () {
-                loadLesson(lesson2);
                 onMenu = false;
+                loadLesson(lesson2);
             };
         })(lesson));
         exLessDiv.appendChild(lessonButton);
@@ -37,12 +37,12 @@ var currentUserLesson;
 function loadLesson(lesson) {
     numberOfMaxHints = 3;
     currentExerciseNumber = 0;
+    changeHintHeading();
+
     var exercises = lesson.exercises;
     currentUserLesson = new finishedLesson(lesson.lessonName, lesson.lessonID, [], 0, 0);
 
     displayExercise(exercises);
-    addHintEvents();
-
     //create 'Next' button
     var nextButton = document.createElement('button');
     nextButton.setAttribute("class", "submit");
@@ -184,7 +184,8 @@ function displaySpecificExercise(exercise) {
 
 function finishLesson(userLesson) {
 
-
+    //clear the hint array
+    usedHintsPerLesson = [];
     //add user's progress to overall progress
     userLesson.totalCorrect = correctExercises;
     userLesson.totalExCount = shownExNumber;
