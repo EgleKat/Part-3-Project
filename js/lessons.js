@@ -13,6 +13,7 @@ function displayLessonMenu(lessons) {
     onMenu = true;
     exLessDiv.innerHTML = "";
     changeMainHeading("Labas, " + userName);
+    changeHintHeading();
     //Add all the buttons for lessons into the div
     for (var i = 0; i < lessons.length; i++) {
         var lessonButton = document.createElement("button");
@@ -60,8 +61,6 @@ function loadLesson(lesson) {
    
 }
 
-function addHintEvents() {
-}
 function validateExercise(exercises) {
     //check if the main div is displaying an exercise or an answer validation
     if (isCurrentPaneExercise && currentExercise.type !== "explanation") {
@@ -186,9 +185,7 @@ function displaySpecificExercise(exercise) {
 
 function finishLesson(userLesson) {
 
-    collapseAllHints();
-    //clear the hint array
-    usedHintsPerLesson = [];
+    
     //add user's progress to overall progress
     userLesson.totalCorrect = correctExercises;
     userLesson.totalExCount = shownExNumber;
@@ -224,6 +221,9 @@ function displayLessonStats() {
     finishButton.innerHTML = "OK";
 
     finishButton.addEventListener("click", function () {
+        collapseAllHints();
+        //clear the hint array
+        usedHintsPerLesson = [];
         //display lesson menu
         displayLessonMenu(allLessons);
         correctExercises = 0;
