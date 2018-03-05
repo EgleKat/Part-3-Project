@@ -186,6 +186,7 @@ function displaySpecificExercise(exercise) {
 
 function finishLesson(userLesson) {
 
+    collapseAllHints();
     //clear the hint array
     usedHintsPerLesson = [];
     //add user's progress to overall progress

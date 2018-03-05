@@ -158,3 +158,10 @@ function changeMainHeading(value) {
     heading.innerHTML = value;
 
 }
+
+
+function collapseAllHints() {
+    for (var i = 0; i < allHints.length; i++) {
+        $('[id="' + allHints[i] + 'Ex"]').collapse('hide');
+    }
+}
