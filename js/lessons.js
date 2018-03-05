@@ -4,9 +4,8 @@ var isCurrentPaneExercise = false;  //exercise - true, validation - false
 var correctExercises = 0;
 var shownExNumber = 0;
 var onMenu = true;
-var numberOfHintsUsed = 0;
 var numberOfMaxHints;
-
+var usedHintsPerLesson = [];//an array of strings that represent which hints have been clicked on by the user
 
 function displayLessonMenu(lessons) {
 

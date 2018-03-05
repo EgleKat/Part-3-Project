@@ -75,7 +75,7 @@ function addNewExplanation(heading, value) {
     link.setAttribute("href", "#" + heading + "Ex");
     link.innerHTML = heading;
     link.addEventListener("click", (function (e) {
-        addHintEvents(this,e);
+        addHintEvents(this, e);
     }));
 
     //content div
@@ -100,19 +100,31 @@ function addNewExplanation(heading, value) {
     explDiv.appendChild(explContentDiv);
 }
 
-function addHintEvents(link,e) {
-    if (onMenu) {
-        console.log("in menu");
 
+/**
+ * 
+ * @param {any} link html <a> reference
+ * @param {event} e  click event
+ */
+function addHintEvents(link, e) {
+    if (onMenu) {
         //if the user is in a lesson
     } else {
-        console.log("not in menu");
-        if (numberOfHintsUsed <= numberOfMaxHints) {
-            numberOfHintsUsed++;
+        //check if the user has already clicked on the hint, break function
+        for (var hintIndex = 0; hintIndex < usedHintsPerLesson.length; hintIndex++) {
+            if (link.innerHTML === usedHintsPerLesson[hintIndex]) {
+                console.log("hint has been used before");
+                return;
+            }
+        }
+        //if the user has more hints to use up, allow, otherwise stop the link from opening
+        if (usedHintsPerLesson.length < numberOfMaxHints) {
+            usedHintsPerLesson.push(link.innerHTML);
+            console.log("added new hint" + usedHintsPerLesson.length);
         } else {
             e.stopPropagation();
             //TODO SHOW AN ALERT
         }
-        
+
     }
 }
