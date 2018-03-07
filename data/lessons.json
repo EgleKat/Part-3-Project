@@ -4,36 +4,11 @@
         "lessonID": 1,
         "exercises": [
             {
-                "type": "explanation",
-                "question": "Let's say hi in Lithuanian",
-                "explanation": "Hi/Hello - Labas<br>Polite/Plural - Sveiki<br>Female/Male - Sveika/Sveikas"
-            },
-            {
-                "type": "explanation",
-                "question": "Gender",
-                "explanation": "Female Male"
-            },
-            {
-                "type": "explanation",
-                "question": "Declension",
-                "explanation": "Declense shieet"
-            },
-            {
-                "type": "explanation",
-                "question": "Say your name",
-                "explanation": "Mano vardas yra ....."
-            },
-            {
-                "type": "inputText",
-                "question": "Write: 'Hello'",
-                "answers": [ "Labas", "Sveiki", "Sveikas", "Sveika" ]
-            },
-
-            {
-                "type": "multiChoice",
-                "question": "Tu",
-                "answers": [ "You", "wut", "fas" ],
-                "shuffleAnswers": true
+                "type": "multiSelect",
+                "question": "Let's say hi in Lithuanian?",
+                "correctAnswers": ["labas", "sveiki"],
+                "extraAnswers": ["mama"],
+                "shuffleAnswers": false
             }
         ]
     },

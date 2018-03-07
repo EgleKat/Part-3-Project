@@ -9,7 +9,6 @@ var usedHintsPerLesson = [];//an array of strings that represent which hints hav
 var allHints = [];
 
 function displayLessonMenu(lessons) {
-
     onMenu = true;
     exLessDiv.innerHTML = "";
     changeMainHeading("Labas, " + userName);
@@ -58,7 +57,7 @@ function loadLesson(lesson) {
     nextButtonDiv.setAttribute("class", "bottomButton");
     nextButtonDiv.appendChild(nextButton);
     mainDiv.appendChild(nextButtonDiv);
-   
+
 }
 
 function validateExercise(exercises) {
@@ -67,9 +66,10 @@ function validateExercise(exercises) {
         console.log(currentExercise.type);
 
         //if the user has chosen an answer
-        if (typeof currentAnswer !== 'undefined') {
+        if (typeof currentAnswer !== 'undefined' || currentAnswer === []) {
             shownExNumber++;
 
+            //TODO fix repeating code
             //check the correct answer based on the exercise type
             switch (currentExercise.type) {
                 case "inputText":
@@ -88,6 +88,16 @@ function validateExercise(exercises) {
                         "exercise": currentExerciseNumber,
                         "answer": currentAnswer,
                         "correct": isUserCorrect
+                    });
+                    break;
+                case "multiSelect":
+                    var userCorrectIncorrectObj = checkAnswer(correctAnswer);
+                    displayAnswerMessage(userCorrectIncorrectObj, exLessDiv);
+                    currentUserLesson.exercises.push({
+                        "exercise": currentExerciseNumber,
+                        "answer": currentAnswer,
+                        "correct": userCorrectIncorrectObj.usersCorrectAnswers.length,
+                        "incorrect": userCorrectIncorrectObj.usersIncorrectAnswers.length
                     });
                     break;
             }
@@ -120,6 +130,7 @@ function validateExercise(exercises) {
 
 function displayExercise(exercises) {
 
+    currentAnswer = undefined;
     if (currentExerciseNumber < exercises.length) {
         currentExercise = exercises[currentExerciseNumber];
         isCurrentPaneExercise = true;
@@ -131,9 +142,16 @@ function displayExercise(exercises) {
                 correctAnswer = currentExercise.answers[0];
                 break;
             case "inputText":
+                //an array of all possible answers
                 correctAnswer = currentExercise.answers;
                 break;
             case "explanation":
+                break;
+            case "multiSelect":
+                //an array of correct answers
+                correctAnswer = currentExercise.correctAnswers;
+                //set the answer variable to be an array
+                currentAnswer = [];
                 break;
         }
 
@@ -158,6 +176,23 @@ function checkAnswer(correctAnswer) {
             }
             return false;
             break;
+        case "multiSelect":
+            var answerScore = { usersCorrectAnswers: [], usersIncorrectAnswers: [] };
+            outerloop:
+            for (var l = 0; l < currentAnswer.length; l++) {
+                for (var m = 0; m < correctAnswer.length; m++) {
+                    if (currentAnswer[l] === correctAnswer[m]) {
+                        // answerScore++;
+                        answerScore.usersCorrectAnswers.push(currentAnswer[l]);
+                        continue outerloop;
+                    }
+                }
+                // answer didn't match any of the correct ones so didn't continue outer loop
+                //answerScore--;
+                answerScore.usersIncorrectAnswers.push(currentAnswer[l]);
+            }
+            return answerScore;
+            break;
     }
 }
 
@@ -174,10 +209,10 @@ function displaySpecificExercise(exercise) {
             break;
         case "inputText":
             displayInputText(exercise.question, exercise.answers, exLessDiv);
-        //    code block
-        //    break;
-        //default:
-        //    code block
+            break;
+        case "multiSelect":
+            displayMultiSelect(exercise.question, exercise.correctAnswers.concat(exercise.extraAnswers), exLessDiv, exercise.shuffleAnswers);
+            break;
     }
 
 
@@ -185,7 +220,7 @@ function displaySpecificExercise(exercise) {
 
 function finishLesson(userLesson) {
 
-    
+
     //add user's progress to overall progress
     userLesson.totalCorrect = correctExercises;
     userLesson.totalExCount = shownExNumber;
@@ -253,11 +288,9 @@ function displayInfoAlert(text) {
     }, 2000);
 }
 
-function displayAnswerMessage(isUserCorrect, div) {
+function displayAnswerMessage(correctness, div) {
+
     isCurrentPaneExercise = false;
-    if (isUserCorrect) {
-        correctExercises++;
-    }
 
     div.innerHTML = "";
 
@@ -266,11 +299,25 @@ function displayAnswerMessage(isUserCorrect, div) {
     questionLabel.innerHTML = currentExercise.question;
     div.appendChild(questionLabel);
 
+    console.log(currentExercise.exerciseType);  
+    //If the exercise is not multiple checkbox select
+    if (currentExercise.type != "multiSelect") {
+        displaySimpleAnswerMessage(correctness, div);
+    }
+    else {
+        displayComplexAnswerMessage(correctness, div);
+    }
+
+}
+
+function displaySimpleAnswerMessage(isUserCorrect, div) {
+    if (isUserCorrect) {
+        correctExercises++;
+    }
+
     //Create the answer div
     var correctAnswerDiv = document.createElement("div");
     correctAnswerDiv.innerHTML = "Your answer - " + currentAnswer + "<br>Possible answers - " + correctAnswer;
-
-
 
     //create alert div
     var alertDiv = document.createElement("div");
@@ -291,5 +338,43 @@ function displayAnswerMessage(isUserCorrect, div) {
 
     div.appendChild(alertDiv);
     div.appendChild(correctAnswerDiv);
+}
 
+function displayComplexAnswerMessage(usersAnswers, div) {
+    //TODO change this
+    //if (isUserCorrect) {
+    //    correctExercises++;
+    //}
+    console.log("complex");
+    //Create the answer div
+    var correctAnswerDiv = document.createElement("div");
+    correctAnswerDiv.innerHTML = "Possible Answers: " + correctAnswer;
+    //create alert div
+    var correctAlertDiv = document.createElement("div");
+    correctAlertDiv.setAttribute("role", "alert");
+    var incorrectAlertDiv = document.createElement("div");
+    incorrectAlertDiv.setAttribute("role", "alert");
+
+    //If the user didn't get any answers correct, don't show it 
+    if (usersAnswers.usersCorrectAnswers !== []) {
+        correctAlertDiv.setAttribute("class", "alert alert-success fade show");
+        var text = "  Correct! <br>" + usersAnswers.usersCorrectAnswers;
+
+        //add text to alert
+        var t = document.createTextNode(text);
+        correctAlertDiv.appendChild(t);
+    }
+
+    //If the user didn't get any answers incorrect, don't show it 
+    if (usersAnswers.usersIncorrectAnswers !== []) {
+        incorrectAlertDiv.setAttribute("class", "alert alert-success fade show");
+        var text = "  Incorrect! <br>" + usersAnswers.usersIncorrectAnswers;
+        //add text to alert
+        var t = document.createTextNode(text);
+        incorrectAlertDiv.appendChild(t);
+    }
+
+    div.appendChild(correctAlertDiv);
+    div.appendChild(incorrectAlertDiv);
+    div.appendChild(correctAnswerDiv);
 }

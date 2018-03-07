@@ -100,3 +100,70 @@ function displayInputText(question, answers, div) {
 
 }
 
+
+/**
+ * Display multiple answer select exercise
+ * @param {string} question exercise question
+ * @param {array<String>} answers an array of all possible answers
+ * @param {div} div the div where to display the exercise
+ * @param {boolean} shuffleAnswers indicator whether or not to shuffle answers to the user
+ */
+function displayMultiSelect(question, answers, div, shuffleAnswers) {
+    div.innerHTML = "";
+
+    //Add a question
+    var questionLabel = document.createElement("h3");
+    questionLabel.innerHTML = question;
+    div.appendChild(questionLabel);
+
+    //Create the answer div
+    var answerDiv = document.createElement("div");
+
+
+    //shuffle the answers
+    if (shuffleAnswers) {
+        answers = shuffle(answers);
+    }
+
+    //add all of the answers as check boxes buttons
+    for (var i = 0; i < answers.length; i++) {
+
+        var oneAnswerDiv = document.createElement("p");
+
+        var answer = answers[i];
+        //create radio button
+        var checkBoxInput = document.createElement('input');
+        checkBoxInput.setAttribute('type', 'checkbox');
+        checkBoxInput.setAttribute('name', question);
+        checkBoxInput.setAttribute('id', i);
+        checkBoxInput.setAttribute('value', answer);
+
+        //Add a click listener to the button
+        checkBoxInput.onclick = function () {
+            //if box is checked, add value to current answers
+            if (this.checked)
+                currentAnswer.push(this.value);
+            else
+                //if box is unchecked, remove value from current answers
+                removeElementFromArray(currentAnswer, this.value);
+
+            console.log(currentAnswer);
+
+        }
+
+        //add label
+        var label = document.createElement('label');
+        label.setAttribute("for", i);
+        label.innerHTML = answer;
+
+
+        //add everything to the div
+        oneAnswerDiv.appendChild(checkBoxInput);
+        oneAnswerDiv.appendChild(label);
+        answerDiv.appendChild(oneAnswerDiv);
+
+    }
+
+    div.appendChild(answerDiv);
+
+}

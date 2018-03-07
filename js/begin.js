@@ -22,11 +22,6 @@ $(document).on('keyup', function (e) {
 
 
 
-
-
-
-
-
 function finishedLesson(name, id, exercises, totalCorrect, totalExCount) {
     this.name = name;
     this.id = id;
