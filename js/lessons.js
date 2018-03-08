@@ -66,7 +66,7 @@ function validateExercise(exercises) {
 
         //if the user has chosen an answer
         if (typeof currentAnswer === 'string' || (Array.isArray(currentAnswer) && currentAnswer.length != 0)) {
-           
+
 
             //TODO fix repeating code
             //check the correct answer based on the exercise type
@@ -137,11 +137,10 @@ function displayExercise(exercises) {
         currentExercise = exercises[currentExerciseNumber];
         isCurrentPaneExercise = true;
 
-
+        //Extract the correct answer
         switch (currentExercise.type) {
             case "multiChoice":
-                //Extract the correct answer
-                correctAnswer = currentExercise.answers[0];
+                correctAnswer = currentExercise.correctAnswer;
                 break;
             case "inputText":
                 //an array of all possible answers
@@ -156,7 +155,6 @@ function displayExercise(exercises) {
                 currentAnswer = [];
                 break;
         }
-
         displaySpecificExercise(currentExercise);
 
     } else
@@ -204,7 +202,9 @@ function displaySpecificExercise(exercise) {
 
     switch (exerciseType) {
         case "multiChoice":
-            displayMultipleChoice(exercise.question, exercise.answers, exLessDiv, exercise.shuffleAnswers);
+            var allAnswers = exercise.extraAnswers.slice();
+            allAnswers.push(correctAnswer);
+            displayMultipleChoice(exercise.question, allAnswers, exLessDiv, exercise.shuffleAnswers);
             break;
         case "explanation":
             displayExplanation(exercise.question, exercise.explanation, exLessDiv);
@@ -312,52 +312,59 @@ function displayAnswerMessage(correctness, div) {
 }
 
 function displaySimpleAnswerMessage(isUserCorrect, div) {
+    //TODO move this, it shouldn't be in this method
     if (isUserCorrect) {
         correctExercises++;
     }
 
-    //Create the answer div
-    var correctAnswerDiv = document.createElement("div");
-    correctAnswerDiv.innerHTML = "Your answer - " + currentAnswer + "<br>Possible answers - " + correctAnswer;
+    var allCorrectAnswersDiv = document.createElement("div");
+    allCorrectAnswersDiv.setAttribute("role", "alert");
+    var userAnswerDiv = document.createElement("div");
+    userAnswerDiv.setAttribute("role", "alert");
+    
 
-    //create alert div
-    var alertDiv = document.createElement("div");
-    alertDiv.setAttribute("role", "alert");
-
-    //display different alerts depending if the user is correct
-    if (isUserCorrect) {
-        alertDiv.setAttribute("class", "alert alert-success fade show");
-        var text = "  Correct!";
-    } else {
-        alertDiv.setAttribute("class", "alert alert-danger fade show");
-        var text = "  Incorrect";
-    }
-
+    allCorrectAnswersDiv.setAttribute("class", "alert alert-warning show");
+    var text = "  All correct Answers:  " + correctAnswer;
     //add text to alert
     var t = document.createTextNode(text);
-    alertDiv.appendChild(t);
+    allCorrectAnswersDiv.appendChild(t);
 
-    div.appendChild(alertDiv);
-    div.appendChild(correctAnswerDiv);
+    var userAnswerText;
+    if(isUserCorrect) {
+        userAnswerDiv.setAttribute("class", "alert alert-success show");
+        userAnswerText = "Correct";
+    }
+    else{
+        userAnswerDiv.setAttribute("class", "alert alert-danger show");
+        userAnswerText = "Incorrect";
+    }
+
+    console.log(currentAnswer);
+    userAnswerText = userAnswerText + ": " + currentAnswer;
+    var t1 = document.createTextNode(userAnswerText);
+    userAnswerDiv.appendChild(t1);    
+    
+    div.appendChild(userAnswerDiv);
+    div.appendChild(allCorrectAnswersDiv);
+
 }
 
 function displayComplexAnswerMessage(usersAnswers, div) {
 
     correctExercises = correctExercises + usersAnswers.usersCorrectAnswers.length - usersAnswers.usersIncorrectAnswers.length;;
 
-    //Create the answer div
-    var correctAnswerDiv = document.createElement("div");
-    correctAnswerDiv.innerHTML = "All correct answers: " + correctAnswer;
     //create alert div
     var correctAlertDiv = document.createElement("div");
     correctAlertDiv.setAttribute("role", "alert");
     var incorrectAlertDiv = document.createElement("div");
     incorrectAlertDiv.setAttribute("role", "alert");
+    var allCorrectAnswersDiv = document.createElement("div");
+    allCorrectAnswersDiv.setAttribute("role", "alert");
 
     //If the user didn't get any answers correct, don't show it 
-    if (usersAnswers.usersCorrectAnswers.length > 0 || usersAnswers.usersCorrectAnswers === undefined) {
+    if (usersAnswers.usersCorrectAnswers.length > 0 || (typeof usersAnswers.usersCorrectAnswers === 'undefined')) {
         correctAlertDiv.setAttribute("class", "alert alert-success fade show");
-        var text = "  Correct!    " + usersAnswers.usersCorrectAnswers;
+        var text = "  Correct:    " + usersAnswers.usersCorrectAnswers;
 
         //add text to alert
         var t = document.createTextNode(text);
@@ -367,9 +374,9 @@ function displayComplexAnswerMessage(usersAnswers, div) {
     }
 
     //If the user didn't get any answers incorrect, don't show it 
-    if (usersAnswers.usersIncorrectAnswers.length > 0 || usersAnswers.usersIncorrectAnswers === undefined) {
+    if (usersAnswers.usersIncorrectAnswers.length > 0 || (typeof usersAnswers.usersIncorrectAnswers === 'undefined')) {
         incorrectAlertDiv.setAttribute("class", "alert alert-danger fade show");
-        var text = "  Incorrect!  " + usersAnswers.usersIncorrectAnswers;
+        var text = "  Incorrect:  " + usersAnswers.usersIncorrectAnswers;
         //add text to alert
         var t = document.createTextNode(text);
         incorrectAlertDiv.appendChild(t);
@@ -377,5 +384,13 @@ function displayComplexAnswerMessage(usersAnswers, div) {
 
     }
 
-    div.appendChild(correctAnswerDiv);
+    allCorrectAnswersDiv.setAttribute("class", "alert alert-warning fade show");
+    var text = "  All correct Answers:  " + correctAnswer;
+    //add text to alert
+    var t = document.createTextNode(text);
+    allCorrectAnswersDiv.appendChild(t);
+    div.appendChild(allCorrectAnswersDiv);
+
+
+
 }

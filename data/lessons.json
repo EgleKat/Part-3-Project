@@ -13,9 +13,11 @@
             {
                 "type": "multiChoice",
                 "question": "wut",
-                "answers": ["bake", "cookie"],
-                "shuffleAnswers" : true
+                "correctAnswer": "bake",
+                "shuffleAnswers": true,
+                "extraAnswers": [ "cookie", "jet" ]
             }
+
         ]
     },
     {

@@ -2,6 +2,8 @@
 
 //the question is a string, answers is an array of strings, where the first element is the correct answer
 function displayMultipleChoice(question, answers, div, shuffleAnswers) {
+
+    console.log("answers" + answers);   
     //Loading Multiple Choice
     div.innerHTML = "";
 
@@ -146,8 +148,6 @@ function displayMultiSelect(question, answers, div, shuffleAnswers) {
             else
                 //if box is unchecked, remove value from current answers
                 removeElementFromArray(currentAnswer, this.value);
-
-            console.log(currentAnswer);
 
         }
 
