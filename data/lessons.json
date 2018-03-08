@@ -6,9 +6,15 @@
             {
                 "type": "multiSelect",
                 "question": "Let's say hi in Lithuanian?",
-                "correctAnswers": ["labas", "sveiki"],
-                "extraAnswers": ["mama"],
+                "correctAnswers": [ "labas", "sveiki" ],
+                "extraAnswers": [ "mama" ],
                 "shuffleAnswers": false
+            },
+            {
+                "type": "multiChoice",
+                "question": "wut",
+                "answers": ["bake", "cookie"],
+                "shuffleAnswers" : true
             }
         ]
     },
