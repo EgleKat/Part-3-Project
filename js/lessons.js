@@ -63,11 +63,10 @@ function loadLesson(lesson) {
 function validateExercise(exercises) {
     //check if the main div is displaying an exercise or an answer validation
     if (isCurrentPaneExercise && currentExercise.type !== "explanation") {
-        console.log(currentExercise.type);
 
         //if the user has chosen an answer
-        if (typeof currentAnswer !== 'undefined' || currentAnswer === []) {
-            shownExNumber++;
+        if (typeof currentAnswer === 'string' || (Array.isArray(currentAnswer) && currentAnswer.length != 0)) {
+           
 
             //TODO fix repeating code
             //check the correct answer based on the exercise type
@@ -80,6 +79,7 @@ function validateExercise(exercises) {
                         "answer": currentAnswer,
                         "correct": isUserCorrect
                     });
+                    shownExNumber++;
                     break;
                 case "multiChoice":
                     var isUserCorrect = checkAnswer(correctAnswer);
@@ -89,6 +89,7 @@ function validateExercise(exercises) {
                         "answer": currentAnswer,
                         "correct": isUserCorrect
                     });
+                    shownExNumber++;
                     break;
                 case "multiSelect":
                     var userCorrectIncorrectObj = checkAnswer(correctAnswer);
@@ -99,6 +100,7 @@ function validateExercise(exercises) {
                         "correct": userCorrectIncorrectObj.usersCorrectAnswers.length,
                         "incorrect": userCorrectIncorrectObj.usersIncorrectAnswers.length
                     });
+                    shownExNumber += currentExercise.correctAnswers.length;
                     break;
             }
 
@@ -299,7 +301,6 @@ function displayAnswerMessage(correctness, div) {
     questionLabel.innerHTML = currentExercise.question;
     div.appendChild(questionLabel);
 
-    console.log(currentExercise.exerciseType);  
     //If the exercise is not multiple checkbox select
     if (currentExercise.type != "multiSelect") {
         displaySimpleAnswerMessage(correctness, div);
@@ -341,14 +342,12 @@ function displaySimpleAnswerMessage(isUserCorrect, div) {
 }
 
 function displayComplexAnswerMessage(usersAnswers, div) {
-    //TODO change this
-    //if (isUserCorrect) {
-    //    correctExercises++;
-    //}
-    console.log("complex");
+
+    correctExercises = correctExercises + usersAnswers.usersCorrectAnswers.length - usersAnswers.usersIncorrectAnswers.length;;
+
     //Create the answer div
     var correctAnswerDiv = document.createElement("div");
-    correctAnswerDiv.innerHTML = "Possible Answers: " + correctAnswer;
+    correctAnswerDiv.innerHTML = "All correct answers: " + correctAnswer;
     //create alert div
     var correctAlertDiv = document.createElement("div");
     correctAlertDiv.setAttribute("role", "alert");
@@ -356,25 +355,27 @@ function displayComplexAnswerMessage(usersAnswers, div) {
     incorrectAlertDiv.setAttribute("role", "alert");
 
     //If the user didn't get any answers correct, don't show it 
-    if (usersAnswers.usersCorrectAnswers !== []) {
+    if (usersAnswers.usersCorrectAnswers.length > 0 || usersAnswers.usersCorrectAnswers === undefined) {
         correctAlertDiv.setAttribute("class", "alert alert-success fade show");
-        var text = "  Correct! <br>" + usersAnswers.usersCorrectAnswers;
+        var text = "  Correct!    " + usersAnswers.usersCorrectAnswers;
 
         //add text to alert
         var t = document.createTextNode(text);
         correctAlertDiv.appendChild(t);
+        div.appendChild(correctAlertDiv);
+
     }
 
     //If the user didn't get any answers incorrect, don't show it 
-    if (usersAnswers.usersIncorrectAnswers !== []) {
-        incorrectAlertDiv.setAttribute("class", "alert alert-success fade show");
-        var text = "  Incorrect! <br>" + usersAnswers.usersIncorrectAnswers;
+    if (usersAnswers.usersIncorrectAnswers.length > 0 || usersAnswers.usersIncorrectAnswers === undefined) {
+        incorrectAlertDiv.setAttribute("class", "alert alert-danger fade show");
+        var text = "  Incorrect!  " + usersAnswers.usersIncorrectAnswers;
         //add text to alert
         var t = document.createTextNode(text);
         incorrectAlertDiv.appendChild(t);
+        div.appendChild(incorrectAlertDiv);
+
     }
 
-    div.appendChild(correctAlertDiv);
-    div.appendChild(incorrectAlertDiv);
     div.appendChild(correctAnswerDiv);
 }
