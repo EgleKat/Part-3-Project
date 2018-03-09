@@ -140,14 +140,18 @@ function displayMultiSelect(question, answers, div, shuffleAnswers) {
         checkBoxInput.setAttribute('id', i);
         checkBoxInput.setAttribute('value', answer);
 
+
+        console.log(currentAnswer);
         //Add a click listener to the button
         checkBoxInput.onclick = function () {
             //if box is checked, add value to current answers
-            if (this.checked)
-                currentAnswer.push(this.value);
+            if (this.checked){
+                console.log(currentAnswer);
+
+                window.currentAnswer.push(this.value);}
             else
                 //if box is unchecked, remove value from current answers
-                removeElementFromArray(currentAnswer, this.value);
+                removeElementFromArray(window.currentAnswer, this.value);
 
         }
 

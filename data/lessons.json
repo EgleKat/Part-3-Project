@@ -3,6 +3,11 @@
         "lessonName": "Introduction",
         "lessonID": 1,
         "exercises": [
+            { 
+                "type": "inputText", 
+                "question": "Write: 'Hello'", 
+                "answers": [ "Labas", "Sveiki", "Sveikas", "Sveika" ] 
+            }, 
             {
                 "type": "multiSelect",
                 "question": "Let's say hi in Lithuanian?",

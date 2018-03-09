@@ -125,14 +125,11 @@ function validateExercise(exercises) {
         currentExerciseNumber++;
         displayExercise(exercises);
     }
-    //clear current answer
-    currentAnswer = undefined;
 
 }
 
 function displayExercise(exercises) {
 
-    currentAnswer = undefined;
     if (currentExerciseNumber < exercises.length) {
         currentExercise = exercises[currentExerciseNumber];
         isCurrentPaneExercise = true;
@@ -152,6 +149,7 @@ function displayExercise(exercises) {
                 //an array of correct answers
                 correctAnswer = currentExercise.correctAnswers;
                 //set the answer variable to be an array
+                console.log("current answer set to array");
                 currentAnswer = [];
                 break;
         }
