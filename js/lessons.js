@@ -159,7 +159,10 @@ function displayExercise(exercises) {
         finishLesson(currentUserLesson);
 
 }
-
+/**
+ * Check whether the currentAnswer is correct and return a boolean or an object with correct and incorrect answers
+ * @param {string||array} correctAnswer 
+ */
 function checkAnswer(correctAnswer) {
     //currentAnswer is stored globally
     switch (currentExercise.type) {
@@ -169,7 +172,7 @@ function checkAnswer(correctAnswer) {
         case "inputText":
             var answers = currentExercise.answers;
             for (var i = 0; i < answers.length; i++) {
-                if (currentAnswer === answers[i])
+                if (currentAnswer.toLowerCase().trim() === answers[i].toLowerCase().trim())
                     return true;
             }
             return false;
