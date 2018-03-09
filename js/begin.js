@@ -171,6 +171,17 @@ function changeMainHeading(value) {
 
 }
 
+function updateMainHeadingWithQuestionNumber(value) {
+    var div = document.getElementById("content");
+    var heading = div.children[0];
+    var headingText = heading.innerHTML;
+    if (hasNumber(headingText))
+        heading.innerHTML = headingText.replace(/[0-9][0-9]?/, value);
+    else
+        heading.innerHTML = headingText + "   " + value;
+
+}
+
 
 function collapseAllHints() {
     for (var i = 0; i < allHints.length; i++) {

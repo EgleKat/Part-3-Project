@@ -2,6 +2,7 @@ var mainDiv = document.getElementById('content');
 var finishedLessonsCount = 0;
 var isCurrentPaneExercise = false;  //exercise - true, validation - false
 var correctExercises = 0;
+var maxPointsPerLesson = 0;
 var shownExNumber = 0;
 var onMenu = true;
 var numberOfMaxHints;
@@ -35,6 +36,7 @@ var currentExercise;
 var currentAnswer;
 var correctAnswer;
 var currentUserLesson;
+
 function loadLesson(lesson) {
     numberOfMaxHints = 3;
     currentExerciseNumber = 0;
@@ -79,6 +81,7 @@ function validateExercise(exercises) {
                         "answer": currentAnswer,
                         "correct": isUserCorrect
                     });
+                    maxPointsPerLesson++;
                     shownExNumber++;
                     break;
                 case "multiChoice":
@@ -89,6 +92,7 @@ function validateExercise(exercises) {
                         "answer": currentAnswer,
                         "correct": isUserCorrect
                     });
+                    maxPointsPerLesson++;
                     shownExNumber++;
                     break;
                 case "multiSelect":
@@ -100,7 +104,8 @@ function validateExercise(exercises) {
                         "correct": userCorrectIncorrectObj.usersCorrectAnswers.length,
                         "incorrect": userCorrectIncorrectObj.usersIncorrectAnswers.length
                     });
-                    shownExNumber += currentExercise.correctAnswers.length;
+                    maxPointsPerLesson += currentExercise.correctAnswers.length;
+                    shownExNumber++;
                     break;
             }
 
@@ -134,6 +139,7 @@ function displayExercise(exercises) {
         currentExercise = exercises[currentExerciseNumber];
         isCurrentPaneExercise = true;
 
+        updateMainHeadingWithQuestionNumber((shownExNumber + 1));
         //Extract the correct answer
         switch (currentExercise.type) {
             case "multiChoice":
@@ -226,7 +232,7 @@ function finishLesson(userLesson) {
 
     //add user's progress to overall progress
     userLesson.totalCorrect = correctExercises;
-    userLesson.totalExCount = shownExNumber;
+    userLesson.totalExCount = maxPointsPerLesson;
     finishedLessons.lessons.push(userLesson);
     finishedLessonsCount++;
     console.log(JSON.stringify(finishedLessons));
@@ -248,7 +254,7 @@ function finishLesson(userLesson) {
 function displayLessonStats() {
     //Display correct out of all exercises
     exLessDiv.innerHTML = "";
-    exLessDiv.innerHTML = "Good Job<br>" + correctExercises + "/" + shownExNumber;
+    exLessDiv.innerHTML = "Good Job<br>" + correctExercises + "/" + maxPointsPerLesson;
 
     //add a button to finish lesson
     var buttonDiv = document.createElement('div');
@@ -265,7 +271,7 @@ function displayLessonStats() {
         //display lesson menu
         displayLessonMenu(allLessons);
         correctExercises = 0;
-        shownExNumber = 0;
+        maxPointsPerLesson = 0;
         mainDiv.removeChild(document.getElementsByClassName("bottomButton")[0]);
     });
     buttonDiv.appendChild(finishButton);

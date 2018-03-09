@@ -37,3 +37,7 @@ function removeElementFromArray(array, element) {
         array.splice(index, 1);
     }
 }
+
+function hasNumber(value) {
+    return /\d/.test(value);
+}
