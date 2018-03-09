@@ -1,7 +1,7 @@
 var allLessons = readLessonJson();
 var exLessDiv = document.getElementById('change');
-var userName = "Alexandria";
-displayLessonMenu(allLessons);
+displayNameInput();
+var userName;
 var finishedLessons = { "userName": userName, "lessons": [] };
 
 
@@ -19,8 +19,25 @@ $(document).on('keyup', function (e) {
 });
 
 
+/**
+ * Show a dialog (modal) pop-up and get a user name from an input box
+ */
+function displayNameInput() {
+    $('#myModal').modal({ backdrop: 'static', keyboard: false });
+    $("#acceptUserName").click(function () {
+        var name = $('#userNameInput').val();
+        name.trim();
+
+        //If the name is NOT (undefined and empty)
+        if (typeof name !== 'undefined' && name.length > 0) {
+            $("#myModal").modal('hide');
+            userName = name;
+            displayLessonMenu(allLessons);
+        }
+    });
 
 
+}
 
 function finishedLesson(name, id, exercises, totalCorrect, totalExCount) {
     this.name = name;
@@ -52,7 +69,7 @@ function readLessonJson() {
 function addNewExplanation(heading, value) {
 
     //If the explanation already exists, break out of the function
-    for (var i=0; i < allHints.length; i++) {
+    for (var i = 0; i < allHints.length; i++) {
         if (allHints[i] === heading)
             return;
     }
