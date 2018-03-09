@@ -322,7 +322,7 @@ function displaySimpleAnswerMessage(isUserCorrect, div) {
     allCorrectAnswersDiv.setAttribute("role", "alert");
     var userAnswerDiv = document.createElement("div");
     userAnswerDiv.setAttribute("role", "alert");
-    
+
 
     allCorrectAnswersDiv.setAttribute("class", "alert alert-warning show");
     var text = "  All correct Answers:  " + correctAnswer;
@@ -331,11 +331,11 @@ function displaySimpleAnswerMessage(isUserCorrect, div) {
     allCorrectAnswersDiv.appendChild(t);
 
     var userAnswerText;
-    if(isUserCorrect) {
+    if (isUserCorrect) {
         userAnswerDiv.setAttribute("class", "alert alert-success show");
         userAnswerText = "Correct";
     }
-    else{
+    else {
         userAnswerDiv.setAttribute("class", "alert alert-danger show");
         userAnswerText = "Incorrect";
     }
@@ -343,8 +343,8 @@ function displaySimpleAnswerMessage(isUserCorrect, div) {
     console.log(currentAnswer);
     userAnswerText = userAnswerText + ": " + currentAnswer;
     var t1 = document.createTextNode(userAnswerText);
-    userAnswerDiv.appendChild(t1);    
-    
+    userAnswerDiv.appendChild(t1);
+
     div.appendChild(userAnswerDiv);
     div.appendChild(allCorrectAnswersDiv);
 
@@ -385,12 +385,14 @@ function displayComplexAnswerMessage(usersAnswers, div) {
 
     }
 
-    allCorrectAnswersDiv.setAttribute("class", "alert alert-warning fade show");
-    var text = "  All correct Answers:  " + correctAnswer;
-    //add text to alert
-    var t = document.createTextNode(text);
-    allCorrectAnswersDiv.appendChild(t);
-    div.appendChild(allCorrectAnswersDiv);
+    if (usersAnswers.usersCorrectAnswers.length < correctAnswer.length) {
+        allCorrectAnswersDiv.setAttribute("class", "alert alert-warning fade show");
+        var text = "  All correct Answers:  " + correctAnswer;
+        //add text to alert
+        var t = document.createTextNode(text);
+        allCorrectAnswersDiv.appendChild(t);
+        div.appendChild(allCorrectAnswersDiv);
+    }
 
 
 
