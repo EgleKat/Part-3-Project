@@ -254,8 +254,14 @@ function finishLesson(userLesson) {
 function displayLessonStats() {
     //Display correct out of all exercises
     exLessDiv.innerHTML = "";
-    exLessDiv.innerHTML = "Good Job<br>" + correctExercises + "/" + maxPointsPerLesson;
-
+    var text;
+    if (correctExercises >= maxPointsPerLesson / 2) {
+        text = 'Good Job';
+    } else {
+        text = 'Jinkies! You answered less than half of the answers correctly.';
+    }
+    text = text + "  " + correctExercises + "/" + maxPointsPerLesson;
+    exLessDiv.innerHTML = text;
     //add a button to finish lesson
     var buttonDiv = document.createElement('div');
     buttonDiv.setAttribute("class", "bottomButton");
