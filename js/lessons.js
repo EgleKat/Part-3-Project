@@ -111,7 +111,7 @@ function validateExercise(exercises) {
 
             //if the user hasn't chosen an answer 
         } else {
-            displayInfoAlert("You have to select an answer to proceed");
+            displayInfoAlert("You have to answer the question to proceed.");
             return;
         }
 
@@ -296,7 +296,6 @@ function displayInfoAlert(text) {
         $(".alert").alert('close');
     }, 2000);
 }
-
 function displayAnswerMessage(correctness, div) {
 
     isCurrentPaneExercise = false;
