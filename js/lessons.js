@@ -33,7 +33,7 @@ function displayLessonMenu(lessons) {
 
         lessonButtonDiv.appendChild(lessonButton);
         exLessDiv.appendChild(lessonButtonDiv);
-        
+
         for (var l = finishedLessons.lessons.length - 1; l >= 0; l--) {
             //If the user has finished the lesson
             if (finishedLessons.lessons[l].name == lessons[i].lessonName) {
@@ -321,11 +321,10 @@ function displayLessonStats() {
         correctExercises = 0;
         maxPointsPerLesson = 0;
         mainDiv.removeChild(document.getElementById("bottomButtonDiv"));
+        displayTimeoutMessage();
     });
     buttonDiv.appendChild(finishButton);
     mainDiv.appendChild(buttonDiv);
-
-
 }
 
 function displayInfoAlert(text) {
@@ -448,5 +447,20 @@ function displayComplexAnswerMessage(usersAnswers, div) {
     }
 
 
+
+}
+
+function displayTimeoutMessage() {
+    var timer = new Timer();
+
+    timer.start({ countdown: true, startValues: { seconds: 60 } });
+    $('#timerModal .values').html(timer.getTimeValues().toString());
+    timer.addEventListener('secondsUpdated', function (e) {
+        $('#timerModal .values').html(timer.getTimeValues().toString());
+    });
+    timer.addEventListener('targetAchieved', function (e) {
+        $("#timerModal").modal('hide');
+    });
+    $('#timerModal').modal({ backdrop: 'static', keyboard: false });
 
 }

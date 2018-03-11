@@ -106,3 +106,8 @@ h3 {
     border: solid 2px #007bff;
     border-top: none;
 }
+.values{
+    margin-left:20px;
+    text-align: center;
+    font-size: 150%;
+}
