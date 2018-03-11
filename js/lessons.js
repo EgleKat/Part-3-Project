@@ -19,7 +19,7 @@ function displayLessonMenu(lessons) {
         var lessonButton = document.createElement("button");
         var lesson = lessons[i];
         lessonButton.innerHTML = "LESSON " + lesson.lessonID + "<br />" + lesson.lessonName;
-        lessonButton.className = "btn btn-primary";
+        lessonButton.className = "lessonButton btn btn-primary";
 
         lessonButton.addEventListener("click", (function (lesson2) {
             return function () {
@@ -48,7 +48,7 @@ function loadLesson(lesson) {
     displayExercise(exercises);
     //create 'Next' button
     var nextButton = document.createElement('button');
-    nextButton.classList.add("btn-lg","submit", "btn-md",  "btn-info");
+    nextButton.classList.add("bottomButton", "submit", "btn-lg", "btn-info");
     nextButton.innerHTML = "Next";
 
     nextButton.addEventListener("click", function () {
@@ -56,7 +56,7 @@ function loadLesson(lesson) {
     });
 
     var nextButtonDiv = document.createElement('div');
-    nextButtonDiv.setAttribute("class", "bottomButton");
+    nextButtonDiv.setAttribute("id", "bottomButtonDiv");
     nextButtonDiv.appendChild(nextButton);
     mainDiv.appendChild(nextButtonDiv);
 
@@ -238,7 +238,7 @@ function finishLesson(userLesson) {
     console.log(JSON.stringify(finishedLessons));
 
     //remove the next button child
-    mainDiv.removeChild(document.getElementsByClassName("bottomButton")[0]);
+    mainDiv.removeChild(document.getElementById("bottomButtonDiv"));
 
     displayLessonStats();
 
@@ -252,6 +252,8 @@ function finishLesson(userLesson) {
 }
 
 function displayLessonStats() {
+    var statsDiv = document.createElement("div");
+    statsDiv.className = ("stats");
     //Display correct out of all exercises
     exLessDiv.innerHTML = "";
     var text;
@@ -260,14 +262,15 @@ function displayLessonStats() {
     } else {
         text = 'Jinkies! You answered less than half of the answers correctly.';
     }
-    text = text + "  " + correctExercises + "/" + maxPointsPerLesson;
-    exLessDiv.innerHTML = text;
+    text = text + " <br/> " + correctExercises + "/" + maxPointsPerLesson;
+    statsDiv.innerHTML = text;
+    exLessDiv.appendChild(statsDiv);
     //add a button to finish lesson
     var buttonDiv = document.createElement('div');
-    buttonDiv.setAttribute("class", "bottomButton");
+    buttonDiv.setAttribute("id", "bottomButtonDiv");
 
     var finishButton = document.createElement('button');
-    finishButton.setAttribute("class", "submit");
+    finishButton.classList.add("bottomButton", "submit", "btn-lg", "btn-info");
     finishButton.innerHTML = "OK";
 
     finishButton.addEventListener("click", function () {
@@ -278,7 +281,7 @@ function displayLessonStats() {
         displayLessonMenu(allLessons);
         correctExercises = 0;
         maxPointsPerLesson = 0;
-        mainDiv.removeChild(document.getElementsByClassName("bottomButton")[0]);
+        mainDiv.removeChild(document.getElementById("bottomButtonDiv"));
     });
     buttonDiv.appendChild(finishButton);
     mainDiv.appendChild(buttonDiv);

@@ -42,6 +42,7 @@ function displayMultipleChoice(question, answers, div, shuffleAnswers) {
         //add label
         var label = document.createElement('label');
         label.setAttribute("for", i);
+        label.classList.add('exLabel');
         label.innerHTML = answer;
 
 
@@ -158,6 +159,7 @@ function displayMultiSelect(question, answers, div, shuffleAnswers) {
         //add label
         var label = document.createElement('label');
         label.setAttribute("for", i);
+        label.classList.add("exLabel");
         label.innerHTML = answer;
 
 
