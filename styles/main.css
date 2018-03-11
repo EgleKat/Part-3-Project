@@ -57,4 +57,9 @@ body {
 .bottomButton {
     position: absolute;
     bottom: 20px;
+    
+}
+.submit{
+    background-color: #0094ff !important;
+
 }

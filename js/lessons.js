@@ -48,7 +48,7 @@ function loadLesson(lesson) {
     displayExercise(exercises);
     //create 'Next' button
     var nextButton = document.createElement('button');
-    nextButton.setAttribute("class", "submit");
+    nextButton.classList.add("btn-lg","submit", "btn-md",  "btn-info");
     nextButton.innerHTML = "Next";
 
     nextButton.addEventListener("click", function () {
