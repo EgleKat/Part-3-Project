@@ -82,6 +82,7 @@ h3 {
 .lessonButton{
     padding: 20px!important;
     font-size: 130%!important;
+    width:100%;
 }
 .stats{
     padding:10px;
@@ -96,4 +97,12 @@ h3 {
     position: absolute;
     top: -7px;
     right: -5px;
+}
+.countInMenu{
+    font-size: 90%;
+    padding:1px;
+    top: -5px;
+    position: relative;
+    border: solid 2px #007bff;
+    border-top: none;
 }

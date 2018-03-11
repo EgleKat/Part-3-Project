@@ -31,38 +31,41 @@ function displayLessonMenu(lessons) {
             };
         })(lesson));
 
-
+        lessonButtonDiv.appendChild(lessonButton);
+        exLessDiv.appendChild(lessonButtonDiv);
+        
         for (var l = finishedLessons.lessons.length - 1; l >= 0; l--) {
             //If the user has finished the lesson
             if (finishedLessons.lessons[l].name == lessons[i].lessonName) {
 
-                console.log("found a lesson");
                 var finishedLsn = finishedLessons.lessons[l];
                 var countCorrect = finishedLsn.totalCorrect;
                 var maxCount = finishedLsn.maxPointsAvailable;
 
+
+                //If the user finished the lesson with more than half answers being successful
+                if (countCorrect > maxCount / 2) {
+                    lessonButton.style.backgroundColor = "#4CAF50"; //make button green
+                }
                 //If the user answered all the questions correctly
                 if (countCorrect === maxCount) {
-                    //create a n 'Expert' badge and add it to the div
+                    //create an 'Expert' badge and add it to the div
                     var labelSpan = document.createElement("span");
                     labelSpan.className = ("badge");
                     labelSpan.classList.add("badge-warning", "badge-secondary", "lessonBadge");
                     labelSpan.innerHTML = "Expert!";
                     lessonButtonDiv.appendChild(labelSpan);
                 }
-                else if (countCorrect > maxCount / 2) {
-                    //If the user finished the lesson with more than half answers being successfuls
-                    lessonButton.style.backgroundColor = "#4CAF50";
 
-                }
+                //Display the number of correct answers in a div
+                var countDiv = document.createElement("div");
+                countDiv.className = ("countInMenu");
+                lessonButtonDiv.appendChild(countDiv);
+                countDiv.innerHTML = ("Recent progress: " + countCorrect + " / " + maxCount);
+                break;
             }
         }
 
-
-
-
-        lessonButtonDiv.appendChild(lessonButton);
-        exLessDiv.appendChild(lessonButtonDiv);
     }
 
 }
