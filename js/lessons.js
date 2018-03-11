@@ -16,6 +16,9 @@ function displayLessonMenu(lessons) {
     changeHintHeading();
     //Add all the buttons for lessons into the div
     for (var i = 0; i < lessons.length; i++) {
+        var lessonButtonDiv = document.createElement("div");
+        lessonButtonDiv.className = ("lessonButtonDiv");
+        lessonButtonDiv.setAttribute("id", lessons[i].lessonName);
         var lessonButton = document.createElement("button");
         var lesson = lessons[i];
         lessonButton.innerHTML = "LESSON " + lesson.lessonID + "<br />" + lesson.lessonName;
@@ -27,7 +30,39 @@ function displayLessonMenu(lessons) {
                 loadLesson(lesson2);
             };
         })(lesson));
-        exLessDiv.appendChild(lessonButton);
+
+
+        for (var l = finishedLessons.lessons.length - 1; l >= 0; l--) {
+            //If the user has finished the lesson
+            if (finishedLessons.lessons[l].name == lessons[i].lessonName) {
+
+                console.log("found a lesson");
+                var finishedLsn = finishedLessons.lessons[l];
+                var countCorrect = finishedLsn.totalCorrect;
+                var maxCount = finishedLsn.maxPointsAvailable;
+
+                //If the user answered all the questions correctly
+                if (countCorrect === maxCount) {
+                    //create a n 'Expert' badge and add it to the div
+                    var labelSpan = document.createElement("span");
+                    labelSpan.className = ("badge");
+                    labelSpan.classList.add("badge-warning", "badge-secondary", "lessonBadge");
+                    labelSpan.innerHTML = "Expert!";
+                    lessonButtonDiv.appendChild(labelSpan);
+                }
+                else if (countCorrect > maxCount / 2) {
+                    //If the user finished the lesson with more than half answers being successfuls
+                    lessonButton.style.backgroundColor = "#4CAF50";
+
+                }
+            }
+        }
+
+
+
+
+        lessonButtonDiv.appendChild(lessonButton);
+        exLessDiv.appendChild(lessonButtonDiv);
     }
 
 }
@@ -232,7 +267,7 @@ function finishLesson(userLesson) {
 
     //add user's progress to overall progress
     userLesson.totalCorrect = correctExercises;
-    userLesson.totalExCount = maxPointsPerLesson;
+    userLesson.maxPointsAvailable = maxPointsPerLesson;
     finishedLessons.lessons.push(userLesson);
     finishedLessonsCount++;
     console.log(JSON.stringify(finishedLessons));
@@ -262,6 +297,7 @@ function displayLessonStats() {
     } else {
         text = 'Jinkies! You answered less than half of the answers correctly.';
     }
+    if (correctExercises < 0) correctExercises = 0;
     text = text + " <br/> " + correctExercises + "/" + maxPointsPerLesson;
     statsDiv.innerHTML = text;
     exLessDiv.appendChild(statsDiv);

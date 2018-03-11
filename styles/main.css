@@ -80,11 +80,20 @@ h3 {
     font-size:120%;
 }
 .lessonButton{
-    margin: 2%;    
     padding: 20px!important;
     font-size: 130%!important;
 }
 .stats{
     padding:10px;
     font-size: 110%;
+}
+.lessonButtonDiv{
+    position: relative;
+    display: inline-table;
+    margin: 1.5%;
+}
+.lessonBadge{
+    position: absolute;
+    top: -7px;
+    right: -5px;
 }

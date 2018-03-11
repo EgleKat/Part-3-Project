@@ -7,20 +7,6 @@
                 "type": "inputText", 
                 "question": "Write: 'Hello'", 
                 "answers": [ "Labas", "Sveiki", "Sveikas", "Sveika" ] 
-            }, 
-            {
-                "type": "multiSelect",
-                "question": "Let's say hi in Lithuanian?",
-                "correctAnswers": [ "labas", "sveiki" ],
-                "extraAnswers": [ "mama" ],
-                "shuffleAnswers": false
-            },
-            {
-                "type": "multiChoice",
-                "question": "wut",
-                "correctAnswer": "bake",
-                "shuffleAnswers": true,
-                "extraAnswers": [ "cookie", "jet" ]
             }
 
         ]
