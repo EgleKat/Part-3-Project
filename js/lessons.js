@@ -213,9 +213,11 @@ function checkAnswer(correctAnswer) {
             return (correctAnswer === currentAnswer);
             break;
         case "inputText":
-            var answers = currentExercise.answers;
+            var answers = reformatPunctuation(currentExercise.answers.slice(0));
+            var userAnswer = reformatPunctuation([currentAnswer])[0];
+            console.log(answers + "  " + userAnswer);
             for (var i = 0; i < answers.length; i++) {
-                if (currentAnswer.toLowerCase().trim() === answers[i].toLowerCase().trim())
+                if (userAnswer.toLowerCase().trim() === answers[i].toLowerCase().trim())
                     return true;
             }
             return false;
@@ -238,6 +240,17 @@ function checkAnswer(correctAnswer) {
             return answerScore;
             break;
     }
+}
+/**
+ * remove commas from the string
+ * @param {*} changeMe 
+ */
+function reformatPunctuation(changeMe) {
+    for (var i = 0; i < changeMe.length; i++) {
+        changeMe[i] = changeMe[i].replace(',', " ");
+        changeMe[i] = changeMe[i].replace(/\s+/, " ");
+    }
+    return changeMe;
 }
 
 function displaySpecificExercise(exercise) {
@@ -342,6 +355,11 @@ function displayInfoAlert(text) {
         $(".alert-info").alert('close');
     }, 2000);
 }
+/**
+ * Display the 'corect'/'incorrect' message after pressing next
+ * @param {bool/obj} correctness defines if the user was correct 
+ * @param {*} div 
+ */
 function displayAnswerMessage(correctness, div) {
 
     isCurrentPaneExercise = false;
@@ -382,7 +400,11 @@ function displaySimpleAnswerMessage(isUserCorrect, div) {
     else {
         userAnswerDiv.setAttribute("class", "alert alert-danger show");
         userAnswerText = "Incorrect";
+    }
+    div.appendChild(userAnswerDiv);
 
+    //yellow alert message
+    if (currentExercise.type === 'inputText' || !isUserCorrect) {
         allCorrectAnswersDiv.setAttribute("class", "alert alert-warning show");
         allCorrectAnswersDiv.setAttribute("role", "alert");
         var text = "  Correct Answer:  " + correctAnswer;
@@ -396,7 +418,6 @@ function displaySimpleAnswerMessage(isUserCorrect, div) {
     var t1 = document.createTextNode(userAnswerText);
     userAnswerDiv.appendChild(t1);
 
-    div.appendChild(userAnswerDiv);
 
 }
 

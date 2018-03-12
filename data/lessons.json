@@ -3,18 +3,110 @@
         "lessonName": "Introduction",
         "lessonID": 1,
         "exercises": [
-            { 
-                "type": "inputText", 
-                "question": "Write: 'Hello'", 
-                "answers": [ "Labas", "Sveiki", "Sveikas", "Sveika" ] 
+            {
+                "type": "explanation",
+                "question": "The Alphabet",
+                "explanation": "Before starting to learn Lithuanian, you should know that the Lithuanian uses the latin alphabet, however it has a few additional letters.<br>-'ą' is a long and 'a' is a short sound (l<b>u</b>ck - short, <b>a</b>rchitecture - long)<br>Same goes for: <br>-'ę' and 'e' (<b>e</b>nvelope - short, el<b>a</b>stic - long)<br>-'į' and 'i' (<b>i</b>mp - short, <b>ea</b>ting - long)<br>-'ų' and 'u' (y<b>ou</b> - long, p<b>u</b>t - short)<br>And then there are: <br>'č' (<b>ch</b>ips), 'ž' (plea<b>ss</b>ure), 'š' (<b>sh</b>ampoo),  'ė' (nightm<b>are</b>), 'y' (mach<b>i</b>ne), 'ū' (m<b>oo</b>n)<br>"
+            },
+            {
+                "type": "explanation",
+                "question": "Let's say hi in Lithuanian",
+                "explanation": "Hi/Hello - Labas<br>Polite/Plural - Sveiki<br>Female/Male - Sveika/Sveikas"
+            },
+            {
+                "type": "multiChoice",
+                "question": "Hello - ",
+                "correctAnswer": "Labas",
+                "extraAnswers": [
+                    "Labu",
+                    "Labai"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiSelect",
+                "question": "Hello (Select all that apply) ",
+                "correctAnswers": [
+                    "Sveiki",
+                    "Labas",
+                    "Sveikas"
+                ],
+                "shuffleAnswers": true,
+                "extraAnswers": [
+                    "Labai",
+                    "Sala"
+                ]
+            },
+            {
+                "type": "explanation",
+                "question": "Gender",
+                "explanation": "You might have noticed that there are multiple ways to use Sveiki. <br>That is because you can use it differently, depending on what gender the person you're speaking to is. <br>Every noun has either a male or female gender and every gender has many word endings, but the most common are:<br>'a','ė' for female (mam<b>a</b>-mum) and <br>'as', 'is' for male (stal<b>as</b>-table)"
+            },
+            {
+                "type": "explanation",
+                "question": "Plural",
+                "explanation": "Every noun, verb or adjective, in Lithuanian, has a different ending depending on it's plurality. <br>For example, 2 small tables would translate to <br>2 maži stalai, whereas one small table is <br>1 mažas stalas<br> (Notice the different endings)<br>Plural is also used to approach someone you don't know or someone you respect, <br>e.g. Sveiki, broli (Hello, brother)"
+            },
+            {
+                "type": "inputText",
+                "question": "Write: 'Hello, mum'",
+                "answers": [
+                    "Labas, mama",
+                    "Sveika, mama",
+                    "Sveiki, mama"
+                ]
+            },
+            {
+                "type": "multiSelect",
+                "question": "Select all: 'Hello, mum' ",
+                "correctAnswers": [
+                    "Sveika, mama",
+                    "Sveiki, mama"
+                ],
+                "shuffleAnswers": true,
+                "extraAnswers": [
+                    "Sveikas, mama",
+                    "Labas, stalas",
+                    "Sveika, mum"
+                ]
+            },
+            {
+                "type": "multiSelect",
+                "question": "Select all words that are of female gender",
+                "correctAnswers": [
+                    "mama",
+                    "gėlė"
+                ],
+                "shuffleAnswers": true,
+                "extraAnswers": [
+                    "tėtis",
+                    "stalas"
+                ]
             }
-
         ]
     },
     {
         "lessonName": "Declension",
         "lessonID": 2,
-        "exercises": []
+        "exercises": [
+            {
+                "type": "explanation",
+                "question": "Gender",
+                "explanation": "nothing"
+            },
+            {
+                "type": "multiSelect",
+                "question": "Select all words that are of female gender",
+                "correctAnswers": [
+                    "mama",
+                    "gėlė"
+                ],
+                "shuffleAnswers": true,
+                "extraAnswers": [
+                    "stalas"
+                ]
+            }
+        ]
     },
     {
         "lessonName": "More Declension",
