@@ -135,14 +135,12 @@ function addHintEvents(link, e) {
         //check if the user has already clicked on the hint, break function
         for (var hintIndex = 0; hintIndex < usedHintsPerLesson.length; hintIndex++) {
             if (link.innerHTML === usedHintsPerLesson[hintIndex]) {
-                console.log("hint has been used before");
                 return;
             }
         }
         //if the user has more hints to use up, allow, otherwise stop the link from opening
         if (usedHintsPerLesson.length < numberOfMaxHints) {
             usedHintsPerLesson.push(link.innerHTML);
-            console.log("added new hint" + usedHintsPerLesson.length);
             changeHintHeading();
         } else {
             e.stopPropagation();
@@ -175,10 +173,11 @@ function updateMainHeadingWithQuestionNumber(value) {
     var div = document.getElementById("content");
     var heading = div.children[0];
     var headingText = heading.innerHTML;
-    if (hasNumber(headingText))
+    if (hasNumber(headingText)) {
         heading.innerHTML = headingText.replace(/[0-9][0-9]?/, value);
-    else
+    } else
         heading.innerHTML = headingText + "   " + value;
+
 
 }
 

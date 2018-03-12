@@ -3,7 +3,6 @@ var finishedLessonsCount = 0;
 var isCurrentPaneExercise = false;  //exercise - true, validation - false
 var correctExercises = 0;
 var maxPointsPerLesson = 0;
-var shownExNumber = 0;
 var onMenu = true;
 var numberOfMaxHints;
 var usedHintsPerLesson = [];//an array of strings that represent which hints have been clicked on by the user
@@ -61,7 +60,12 @@ function displayLessonMenu(lessons) {
                 var countDiv = document.createElement("div");
                 countDiv.className = ("countInMenu");
                 lessonButtonDiv.appendChild(countDiv);
-                countDiv.innerHTML = ("Recent progress: " + countCorrect + " / " + maxCount);
+                //If the user's score per lesson is less than 0, make it 0
+                if (countCorrect < 0)
+                    countDiv.innerHTML = ("Recent progress: 0/" + maxCount);
+                else
+                    countDiv.innerHTML = ("Recent progress: " + countCorrect + " / " + maxCount);
+
                 break;
             }
         }
@@ -106,8 +110,6 @@ function validateExercise(exercises) {
 
         //if the user has chosen an answer
         if (typeof currentAnswer === 'string' || (Array.isArray(currentAnswer) && currentAnswer.length != 0)) {
-
-
             //TODO fix repeating code
             //check the correct answer based on the exercise type
             switch (currentExercise.type) {
@@ -120,7 +122,6 @@ function validateExercise(exercises) {
                         "correct": isUserCorrect
                     });
                     maxPointsPerLesson++;
-                    shownExNumber++;
                     break;
                 case "multiChoice":
                     var isUserCorrect = checkAnswer(correctAnswer);
@@ -131,7 +132,6 @@ function validateExercise(exercises) {
                         "correct": isUserCorrect
                     });
                     maxPointsPerLesson++;
-                    shownExNumber++;
                     break;
                 case "multiSelect":
                     var userCorrectIncorrectObj = checkAnswer(correctAnswer);
@@ -143,7 +143,6 @@ function validateExercise(exercises) {
                         "incorrect": userCorrectIncorrectObj.usersIncorrectAnswers.length
                     });
                     maxPointsPerLesson += currentExercise.correctAnswers.length;
-                    shownExNumber++;
                     break;
             }
 
@@ -177,7 +176,7 @@ function displayExercise(exercises) {
         currentExercise = exercises[currentExerciseNumber];
         isCurrentPaneExercise = true;
 
-        updateMainHeadingWithQuestionNumber((shownExNumber + 1));
+        updateMainHeadingWithQuestionNumber((currentExerciseNumber + 1));
         //Extract the correct answer
         switch (currentExercise.type) {
             case "multiChoice":
@@ -340,7 +339,7 @@ function displayInfoAlert(text) {
     mainDiv.appendChild(alertDiv);
 
     window.setTimeout(function () {
-        $(".alert").alert('close');
+        $(".alert-info").alert('close');
     }, 2000);
 }
 function displayAnswerMessage(correctness, div) {
@@ -369,20 +368,13 @@ function displaySimpleAnswerMessage(isUserCorrect, div) {
     if (isUserCorrect) {
         correctExercises++;
     }
-
     var allCorrectAnswersDiv = document.createElement("div");
-    allCorrectAnswersDiv.setAttribute("role", "alert");
+
     var userAnswerDiv = document.createElement("div");
     userAnswerDiv.setAttribute("role", "alert");
 
-
-    allCorrectAnswersDiv.setAttribute("class", "alert alert-warning show");
-    var text = "  All correct Answers:  " + correctAnswer;
-    //add text to alert
-    var t = document.createTextNode(text);
-    allCorrectAnswersDiv.appendChild(t);
-
     var userAnswerText;
+
     if (isUserCorrect) {
         userAnswerDiv.setAttribute("class", "alert alert-success show");
         userAnswerText = "Correct";
@@ -390,15 +382,21 @@ function displaySimpleAnswerMessage(isUserCorrect, div) {
     else {
         userAnswerDiv.setAttribute("class", "alert alert-danger show");
         userAnswerText = "Incorrect";
+
+        allCorrectAnswersDiv.setAttribute("class", "alert alert-warning show");
+        allCorrectAnswersDiv.setAttribute("role", "alert");
+        var text = "  Correct Answer:  " + correctAnswer;
+        //add text to alert
+        var t = document.createTextNode(text);
+        allCorrectAnswersDiv.appendChild(t);
+        div.appendChild(allCorrectAnswersDiv);
     }
 
-    console.log(currentAnswer);
     userAnswerText = userAnswerText + ": " + currentAnswer;
     var t1 = document.createTextNode(userAnswerText);
     userAnswerDiv.appendChild(t1);
 
     div.appendChild(userAnswerDiv);
-    div.appendChild(allCorrectAnswersDiv);
 
 }
 
@@ -453,7 +451,7 @@ function displayComplexAnswerMessage(usersAnswers, div) {
 function displayTimeoutMessage() {
     var timer = new Timer();
 
-    timer.start({ countdown: true, startValues: { seconds: 60 } });
+    timer.start({ countdown: true, startValues: { seconds: 2 } });
     $('#timerModal .values').html(timer.getTimeValues().toString());
     timer.addEventListener('secondsUpdated', function (e) {
         $('#timerModal .values').html(timer.getTimeValues().toString());

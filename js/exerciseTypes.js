@@ -3,7 +3,6 @@
 //the question is a string, answers is an array of strings, where the first element is the correct answer
 function displayMultipleChoice(question, answers, div, shuffleAnswers) {
 
-    console.log("answers" + answers);   
     //Loading Multiple Choice
     div.innerHTML = "";
 
@@ -68,6 +67,7 @@ function displayExplanation(question, explanation, div) {
 
     //Create the explanation div
     var explDiv = document.createElement("div");
+    explDiv.className = "explanationContent";
     explDiv.innerHTML = explanation;
 
     //add everything to the div
@@ -141,8 +141,6 @@ function displayMultiSelect(question, answers, div, shuffleAnswers) {
         checkBoxInput.setAttribute('id', i);
         checkBoxInput.setAttribute('value', answer);
 
-
-        console.log(currentAnswer);
         //Add a click listener to the button
         checkBoxInput.onclick = function () {
             //if box is checked, add value to current answers
