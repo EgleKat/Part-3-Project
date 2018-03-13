@@ -11,7 +11,7 @@
             {
                 "type": "explanation",
                 "question": "Let's say hi in Lithuanian",
-                "explanation": "Hi/Hello - Labas<br>Polite/Plural - Sveiki<br>Female/Male - Sveika/Sveikas"
+                "explanation": "Hi/Hello - Labas<br>Polite/Plural - Sveiki<br>Female/Male - Sveika/Sveikas<br><br>Labas rytas - Good morning<br>Laba diena - Good day<br>Labas vakaras - Good evening"
             },
             {
                 "type": "multiChoice",
@@ -45,7 +45,7 @@
             {
                 "type": "explanation",
                 "question": "Plural",
-                "explanation": "Every noun, verb or adjective, in Lithuanian, has a different ending depending on it's plurality. <br>For example, 2 small tables would translate to <br>2 maži stalai, whereas one small table is <br>1 mažas stalas<br> (Notice the different endings)<br>Plural is also used to approach someone you don't know or someone you respect, <br>e.g. Sveiki, broli (Hello, brother)"
+                "explanation": "Every noun, verb or adjective, in Lithuanian, has a different ending depending on it's plurality. <br>For example, 2 small tables would translate to <br>2 maži stalai, whereas one small table is <br>1 mažas stalas<br> (Notice the different endings)<br>Plural is also used to approach someone you don't know or someone you respect, <br>e.g. Sveiki, broli (Hello, brother)<br>Some words can be male or female, e.g. <i>stundetas/studentė</i> student(male/female)"
             },
             {
                 "type": "inputText",
@@ -81,6 +81,204 @@
                 "extraAnswers": [
                     "tėtis",
                     "stalas"
+                ]
+            },
+            {
+                "type": "explanation",
+                "question": "Articles",
+                "explanation": "There are no articles in Lithuanian. All words are equally important, so 'gėlė' means 'the flower' and 'a flower' "
+            },
+            {
+                "type": "multiSelect",
+                "question": "Select all words that are of male gender",
+                "correctAnswers": [
+                    "rokas"
+                ],
+                "shuffleAnswers": true,
+                "extraAnswers": [
+                    "mama",
+                    "kėdė"
+                ]
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which one is <b>incorrect</b> ?",
+                "correctAnswer": "Sveika, tėtis",
+                "extraAnswers": [
+                    "Labas, mama",
+                    "Sveiki, mama"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "explanation",
+                "question": "Introduce Yourself",
+                "explanation": " <i>Labas, mano vardas yra</i><br>Hello, my name is<br><br><i>Aš esu<i/><br>I am<br><br><i>Koks yra tavo vardas?</i><br>What is your name?"
+            },
+            {
+                "type": "multiChoice",
+                "question": "Name - ?",
+                "correctAnswer": "vardas",
+                "extraAnswers": [
+                    "labas",
+                    "tavo"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "inputText",
+                "question": "Write: 'name'",
+                "answers": [
+                    "vardas"
+                ]
+            },
+            {
+                "type": "multiChoice",
+                "question": "my, yours - ?",
+                "correctAnswer": "mano, tavo",
+                "extraAnswers": [
+                    "tavo, mano",
+                    "mano, savo"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "explanation",
+                "question": "Verb Assumption",
+                "explanation": "Sometimes, you can assume that a word is in the sentence, even if it's not written so.<br>Most commonly it is assumed that the word 'is' is in the sentence.<br>E.g. <i>Mano vardas - Simona</i><br> My name (is) Simona<br>Note that the assumed word is replaced with a dash."
+            },
+            {
+                "type": "inputText",
+                "question": "Write: 'My name is Simona'",
+                "answers": [
+                    "Mano vardas yra Simona",
+                    "Mano vardas - Simona"
+                ]
+            },
+            {
+                "type": "inputText",
+                "question": "Write: 'I am Simona'",
+                "answers": [
+                    "Aš esu  Simona",
+                    "Aš - Simona"
+                ]
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which one is <b>incorrect</b>?",
+                "correctAnswer": "Tu esu Aleksas",
+                "extraAnswers": [
+                    "Aš - Aleksas",
+                    "Mano vardas - Aleksas"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiSelect",
+                "question": "Select all words that are of male gender",
+                "correctAnswers": [
+                    "Aleksas",
+                    "kompiuteris"
+                ],
+                "shuffleAnswers": true,
+                "extraAnswers": [
+                    "kėdė"
+                ]
+            },
+            {
+                "type": "multiSelect",
+                "question": "Select all 'I am'",
+                "correctAnswers": [
+                    "Aš esu",
+                    "Aš -"
+                ],
+                "shuffleAnswers": true,
+                "extraAnswers": [
+                    "Aš - Aleksas"
+                ]
+            },
+            {
+                "type": "explanation",
+                "question": "Say Goodbye",
+                "explanation": "Just like saying hello, saying goodbye can be translated into many words<br><i>Viso gero/Sudie</i> - Goodbye<br><i>Ate</i> - Bye<br><i>Iki pasimatymo or Iki</i> - See you later or See you"
+            },
+            {
+                "type": "inputText",
+                "question": "Write: 'Goodbye'",
+                "answers": [
+                    "Ate",
+                    "Sudie",
+                    "Viso gero"
+                ]
+            },
+            {
+                "type": "inputText",
+                "question": "Write: 'See you later'",
+                "answers": [
+                    "Iki",
+                    "Iki pasimatymo"
+                ]
+            },
+            {
+                "type": "multiSelect",
+                "question": "Select all that express the phrase 'goodbye'",
+                "correctAnswers": [
+                    "Sudie",
+                    "Viso Gero"
+                ],
+                "shuffleAnswers": true,
+                "extraAnswers": [
+                    "Iki"
+                ]
+            },
+            {
+                "type": "multiSelect",
+                "question": "Select all that express the word 'see you'",
+                "correctAnswers": [
+                    "Iki",
+                    "Iki pasimatymo"
+                ],
+                "shuffleAnswers": true,
+                "extraAnswers": [
+                    "Sudie"
+                ]
+            },
+            {
+                "type": "explanation",
+                "question": "Personal Pronouns",
+                "explanation": "There are 8 personal pronouns in Lithuanian: <br>Aš - I<br Tu - You<br> Jis - He<br> Ji - She<br><br> Mes - We<br>Jūs - You<br> Jie - They<br>Jos - They (group of only females)"
+            },
+            {
+                "type": "multiChoice",
+                "question": "Ji yra Simona",
+                "correctAnswer": "She is Simona",
+                "extraAnswers": [
+                    "They are called Simona",
+                    "He is Simona"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which one is <b>incorrect</b>?",
+                "correctAnswer": "Jis - Simona",
+                "extraAnswers": [
+                    "Ji - Simona",
+                    "Jis - Ignas",
+                    "Jis yra Ignas"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiSelect",
+                "question": "Select all that are depicting only the female gender",
+                "correctAnswers": [
+                    "Ji yra Simona"
+                ],
+                "shuffleAnswers": true,
+                "extraAnswers": [
+                    "Jis yra Ignas",
+                    "Jie yra Ignai"
                 ]
             }
         ]

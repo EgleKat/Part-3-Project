@@ -248,6 +248,8 @@ function checkAnswer(correctAnswer) {
 function reformatPunctuation(changeMe) {
     for (var i = 0; i < changeMe.length; i++) {
         changeMe[i] = changeMe[i].replace(',', " ");
+        changeMe[i] = changeMe[i].replace('-', " ");
+        changeMe[i] = changeMe[i].replace('–', " ");
         changeMe[i] = changeMe[i].replace(/\s+/, " ");
     }
     return changeMe;
