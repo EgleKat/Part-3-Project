@@ -378,7 +378,7 @@ function displayAnswerMessage(correctness, div) {
     else {
         displayComplexAnswerMessage(correctness, div);
     }
-
+    currentAnswer = undefined;
 }
 
 function displaySimpleAnswerMessage(isUserCorrect, div) {
