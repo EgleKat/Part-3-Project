@@ -114,3 +114,7 @@ h3 {
 .explanationContent {
     margin: 20px;
 }
+#explanations {
+    overflow-y: auto;
+    height:410px;
+}

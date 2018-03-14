@@ -78,7 +78,7 @@ function addNewExplanation(heading, value) {
 
     //hide the primary message
     document.getElementById("primaryExplanation").classList.add("d-none");
-    var explanationMenuDiv = document.getElementById("explanationMenu");
+    var explanationMenuDiv = document.getElementById("explanations");
     //create, name card div
     var cardDiv = document.createElement("div");
     cardDiv.setAttribute("class", "card");

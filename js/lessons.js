@@ -43,7 +43,7 @@ function displayLessonMenu(lessons) {
 
 
                 //If the user finished the lesson with more than half answers being successful
-                if (countCorrect > maxCount / 2) {
+                if (countCorrect >= maxCount / 2) {
                     lessonButton.style.backgroundColor = "#4CAF50"; //make button green
                 }
                 //If the user answered all the questions correctly
@@ -80,7 +80,7 @@ var correctAnswer;
 var currentUserLesson;
 
 function loadLesson(lesson) {
-    numberOfMaxHints = 3;
+    numberOfMaxHints = lesson.hints;
     currentExerciseNumber = 0;
     changeHintHeading();
     changeMainHeading(lesson.lessonName);
@@ -248,6 +248,7 @@ function checkAnswer(correctAnswer) {
 function reformatPunctuation(changeMe) {
     for (var i = 0; i < changeMe.length; i++) {
         changeMe[i] = changeMe[i].replace(',', " ");
+        changeMe[i] = changeMe[i].replace('.', "");
         changeMe[i] = changeMe[i].replace('-', " ");
         changeMe[i] = changeMe[i].replace('–', " ");
         changeMe[i] = changeMe[i].replace(/\s+/, " ");

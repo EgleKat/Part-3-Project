@@ -2,6 +2,7 @@
     {
         "lessonName": "Introduction",
         "lessonID": 1,
+        "hints": 3,
         "exercises": [
             {
                 "type": "explanation",
@@ -286,22 +287,391 @@
     {
         "lessonName": "Declension",
         "lessonID": 2,
+        "hints": 5,
         "exercises": [
             {
                 "type": "explanation",
-                "question": "Gender",
-                "explanation": "nothing"
+                "question": "What are cases?",
+                "explanation": "In Lithuanian every noun, adjective and adverb has a different ending depending on the position and intent of the word.<br><br>A cat is in the <b>house</b> <i>vs</i> A cat is on the <b>house</b><br>The word '<b>house</b>' stays the same.<br><br>Katė/Katinas yra <b>name</b> <i>vs</i> Katė/Katinas yra ant <b>namo</b><br> In this case, the word '<b>namas</b>' has a different ending, depending on its position relative to the cat. <br> Some cases are usually used with specific prepositions."
+            },
+            {
+                "type": "explanation",
+                "question": "Types of Cases",
+                "explanation": "There are 7 cases in the modern Lithuanian language and in simple terms, almost every case answers a question.<br><br><i>Vardininkas</i> (Nominative) - Kas? (What/Who is?)<br><i>Kilmininkas</i> (Genitive) - Ko? (Of what/Whose?)<br><i>Naudininkas</i> (Dative) - Kam? (What for? For what purpose?)<br><i>Galininkas</i> (Accusative) - Ką? (What object is interacted with? What time?)<br><i>Įnagininkas</i> (Instrumentative) - Kuo? (With what?)<br><i>Kilmininkas</i> (Locative) - Kur? (Where?)<br><i>Šauksmininkas</i> (Exclamatory) - (used to address somebody)"
+            },
+            {
+                "type": "explanation",
+                "question": "Nominative - Vardininkas",
+                "explanation": "The Nominative case describes the basic state of the object. It also usually defines which specific word endings you will use in other cases.<br><br> e.g. <b>Telefonas</b> yra name. (A <b>telephone</b> is in the house.)<br><b>Katė</b> bėga. (A <b>cat</b> is running.)<br><br>In both cases the telephone and the cat are the main subjects. <br><i>They</i> are interacting with the world."
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which word has the Nominative case: <br>Mama yra ant namo <br>(Mum is on the house)",
+                "correctAnswer": "Mama",
+                "extraAnswers": [
+                    "yra",
+                    "namo"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which word has the Nominative case: <br>Saulė kyla. <br>(The sun rises)",
+                "correctAnswer": "Saulė",
+                "extraAnswers": [
+                    "kyla"
+                ],
+                "shuffleAnswers": true
             },
             {
                 "type": "multiSelect",
-                "question": "Select all words that are of female gender",
+                "question": "Select all words that have the Nominative case: <br>Aš ir Tomas esame draugai. <br>(I and Tomas are friends.)",
                 "correctAnswers": [
-                    "mama",
-                    "gėlė"
+                    "Aš",
+                    "Tomas"
                 ],
                 "shuffleAnswers": true,
                 "extraAnswers": [
-                    "stalas"
+                    "esame"
+                ]
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which question does the Nominative case answer?",
+                "correctAnswer": "kas? (what?)",
+                "extraAnswers": [
+                    "kur? (where?)",
+                    "kada? (when?)"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "explanation",
+                "question": "Genitive - Kilmininkas",
+                "explanation": "The Genitive case can describe the object's possessive status and state (with certain verbs). It is also used when describing a part of an object.<br>e.g. <b>Mano</b> mama yra Aldona. (<b>My</b> mum is Aldona.) - Possession.<br>Aš mačiau dalį <b>filmo</b>. (I saw a part <b>of the film.</b>) - Part of an object. <br><br> The most common endings for Genitive is 'o' (stal<b>o</b>) and 'ės'(kėd<b>ės</b>), sometimes making the word identical to its plural form. <br> With some prepositions Genitive words are used to define location."
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which word is in the Genitive case: <br>Deividas turi savo namą.<br>(David has his own house.)",
+                "correctAnswer": "savo",
+                "extraAnswers": [
+                    "Deividas",
+                    "turi",
+                    "namą"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which word is in the Genitive case: <br>Telefono laidas yra senas. <br>(The telephone's wire is old.)",
+                "correctAnswer": "Telefono",
+                "extraAnswers": [
+                    "laidas",
+                    "senas"
+                ],
+                "shuffleAnswers": false
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which word is in the Genitive case: <br>Ten yra pusė obuolio. <br>(There is half an apple.) ",
+                "correctAnswer": "obuolio",
+                "extraAnswers": [
+                    "Ten",
+                    "pusė"
+                ],
+                "shuffleAnswers": false
+            },
+            {
+                "type": "multiSelect",
+                "question": "The Genitive case is <b>not</b> used to...",
+                "correctAnswers": [
+                    "Explain purpose",
+                    "Address someone"
+                ],
+                "shuffleAnswers": true,
+                "extraAnswers": [
+                    "Express state of object",
+                    "Express possession"
+                ]
+            },
+            {
+                "type": "inputText",
+                "question": "Write: My cat's",
+                "answers": [
+                    "Mano katės",
+                    "Mano katino"
+                ]
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which word is in the Genitive case: <br>Simonos veidas<br>(Simone's face)",
+                "correctAnswer": "Simonos",
+                "extraAnswers": [
+                    "veidas"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "explanation",
+                "question": "Dative - Naudininkas",
+                "explanation": "The Dative case describes the purpose or the addressee. <br>e.g. Aš perku maistą <b>katinui</b>. (I buy food <b>for the cat</b>.)<br><b>Obuoliai</b> mamai. (Apples <b>for mum</b>.) <br> The most common endings are 'ui' (katin<b>ui</b>), 'ei' (kat<b>ei</b>), 'ai'(mam<b>ai</b>) "
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which word is in the Dative case?",
+                "correctAnswer": "mamai",
+                "extraAnswers": [
+                    "mama",
+                    "mamos"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which word is in the Dative case?",
+                "correctAnswer": "katei",
+                "extraAnswers": [
+                    "katės",
+                    "katė"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which word is in the Dative case?",
+                "correctAnswer": "namui",
+                "extraAnswers": [
+                    "telefonas",
+                    "mamos"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which word is in the Dative case:<br> Man 15 metų. <br>(I am 15 years old.)",
+                "correctAnswer": "Man",
+                "extraAnswers": [
+                    "metų"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which word is in the Dative case?",
+                "correctAnswer": "kompiuteriui",
+                "extraAnswers": [
+                    "kompiuteris",
+                    "kompiuterio"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiSelect",
+                "question": "Which phrases do <b>not</b> contain any words in the Dative case?",
+                "correctAnswers": [
+                    "Mamos katinas",
+                    "Mano katė"
+                ],
+                "shuffleAnswers": true,
+                "extraAnswers": [
+                    "Mano katei",
+                    "Tavo katinui"
+                ]
+            },
+            {
+                "type": "explanation",
+                "question": "Accusative - Galininkas",
+                "explanation": "The Accusative case describes an object, which is being interacted with. It is also used when describing future and past time. Most singular Accusative words end in 'ą', 'ę', į'.<br>e.g. Perku <b>maistą</b> katinui. (I buy <b>food</b> for the cat.)<br>Duodu <b>obuolį</b> mamai. (I give <b>an apple</b> to mum.) <br>Aš dirbsiu <b>pirmadienį</b>. (I will work <b>on Monday</b>.)<br>"
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which word is in Accusative case:<br> Aš skaitau laikraštį. <br>(I read a newspaper.)",
+                "correctAnswer": "laikraštį",
+                "extraAnswers": [
+                    "Aš",
+                    "skaitau"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which word is in Accusative case:<br> Aš matau saulę. <br>(I see the sun.)",
+                "correctAnswer": "saulę",
+                "extraAnswers": [
+                    "Aš",
+                    "matau"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which word is in Accusative case:<br> Mama žiūri filmą. <br>(Mum is watching a film.)",
+                "correctAnswer": "filmą",
+                "extraAnswers": [
+                    "Mama",
+                    "žiūri"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "inputText",
+                "question": "Write in Accusative case: 'mum'",
+                "answers": [
+                    "mamą"
+                ]
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which word is the right form of Accusative for the word 'katė'?",
+                "correctAnswer": "katę",
+                "extraAnswers": [
+                    "katino",
+                    "katės"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiSelect",
+                "question": "Which word is <b>not</b> in accusative form?",
+                "correctAnswers": [
+                    "filmo"
+                ],
+                "extraAnswers": [
+                    "filmą",
+                    "katę",
+                    "tetį"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiSelect",
+                "question": "The Accusative case is used to...",
+                "correctAnswers": [
+                    "express interactivity",
+                    "express time in the past and the future"
+                ],
+                "shuffleAnswers": true,
+                "extraAnswers": [
+                    "express time in the present",
+                    "express possession"
+                ]
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which word is in the Accusative case:<br>Pirmadienį, katė valgo. <br>(On Monday, the cat eats.)",
+                "correctAnswer": "Pirmadienį",
+                "extraAnswers": [
+                    "valgo",
+                    "katė"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "explanation",
+                "question": "Instrumentative - Įnagininkas",
+                "explanation": "The Instrumentative case describes the object that the verb is being done <i>with</i>. <br>If Accusative is 'I'm carrying an <b>apple</b>', then Instrumentative is 'I'm carrying an apple <b>with my hands</b>'. <br>e.g. Aš važiuoju<b> automobiliu</b>. (I'm driving <b>with an automobile</b>.)<br>Aš mojuoju <b>ranka</b>. (I'm waving <b>with a hand</b>.) <br>Tėtis rašo <b>pieštuku</b>. (Dad is writing <b>with a pencil</b>.)<br>"
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which word is in the Instrumentative case:<br>Katė valgo su šakute. <br>(The cat eats with a fork.)",
+                "correctAnswer": "šakute",
+                "extraAnswers": [
+                    "valgo",
+                    "katė",
+                    "su"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which word is in the Instrumentative case:<br>Katinas valgo su kate. <br>(The cat eats with (another) cat.)",
+                "correctAnswer": "kate",
+                "extraAnswers": [
+                    "katinas",
+                    "valgo"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiChoice",
+                "question": "What question does the Instrumentative answer?",
+                "correctAnswer": "(su) kuo? - (with) what?",
+                "extraAnswers": [
+                    "ką? - what?",
+                    "kodėl? - why?"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "explanation",
+                "question": "Locative - Vietininkas",
+                "explanation": "The Locative case describes location. <br><br>e.g. Aš esu <b>parduotuvėje</b>. (I am <b>in a shop</b>.)<br>Aš gyvenu <b>mieste</b>. (I live <b>in a city</b>.)<br><br> The most common word endings are: 'e', 'yje', 'ėje'."
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which word is in the Locative case: <br>Aš gyvenu mieste. <br>(I live in a city.)",
+                "correctAnswer": "mieste",
+                "extraAnswers": [
+                    "Aš",
+                    "Gyvenu"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "inputText",
+                "question": "Finish the sentence: Aš gyvenu _____(in the city)",
+                "answers": [
+                    "mieste"
+                ]
+            },
+            {
+                "type": "multiSelect",
+                "question": "Which words are <b>not</b> in the Locative case: <br>Katinas valgo name. <br>(The cat is eating in the house.)",
+                "correctAnswers": [
+                    "Katinas",
+                    "valgo"
+                ],
+                "extraAnswers": [
+                    "name"
+                ],
+                "shuffleAnswers": false
+            },
+            {
+                "type": "multiChoice",
+                "question": "What question does the Locative case answer?",
+                "correctAnswer": "kur? - where?",
+                "extraAnswers": [
+                    "ką? - what?",
+                    "kuo? - with what?"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "explanation",
+                "question": "Exclamatory - Šauksmininkas",
+                "explanation": "The Exclamatory case is used to approach/address someone. <br><br>e.g.<b>Tėti</b>, labas! (<b>Dad</b>, hi!)<br><b>Egle</b>, einam į parduotuvę. (<b>Egle</b>, let's go to a shop.)<br><br> The most common word endings are: 'e', 'ai', 'i'."
+            },
+            {
+                "type": "multiChoice",
+                "question": "What is the Exclamatory case used for?",
+                "correctAnswer": "to address someone",
+                "extraAnswers": [
+                    "to express location",
+                    "to express instrumentality"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiSelect",
+                "question": "Which phrases don't have any words with the Exclamatory case in them?",
+                "correctAnswers": [
+                    "Mama eina",
+                    "Aš - Petras"
+                ],
+                "shuffleAnswers": true,
+                "extraAnswers": [
+                    "Petrai!",
+                    "Mama, aš name"
                 ]
             }
         ]
@@ -309,6 +679,285 @@
     {
         "lessonName": "More Declension",
         "lessonID": 3,
-        "exercises": []
+        "hints": 3,
+        "exercises": [
+            {
+                "type": "explanation",
+                "question": "'as' Cases",
+                "explanation": "As mentioned before, there are lots of different endings for every case and the ending is determined by the 1st (Nominative) or sometimes the 2nd (Genitive) case.<br>Let's look at words ending with 'as':<br><br>1 (Nom.) - stal<b>as</b><br>2 (Gen.) - stal<b>o</b><br>3 (Dat.) - stal<b>ui</b> <br>4 (Accus.) - stal<b>ą</b><br>5 (Instrum.) - stal<b>u</b><br>6 (Locat.) - stal<b>e</b><br>7 (Excl.) - stal<b>e</b> (For names, the ending is '<b>ai</b>' (Aleks<b>ai</b>)"
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which case is 'stalo'?",
+                "correctAnswer": "2nd Genitive",
+                "extraAnswers": [
+                    "1st Nominative",
+                    "4th Accusative"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "inputText",
+                "question": "Write 'stalas' in the Genitive case.",
+                "answers": [
+                    "stalo"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which case is 'stalą'?",
+                "correctAnswer": "4th Accusative",
+                "extraAnswers": [
+                    "1st Nominative",
+                    "2nd Genitive"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "inputText",
+                "question": "Write 'Tomas' in the Accusative case.",
+                "answers": [
+                    "Tomą"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which case is 'mano'?",
+                "correctAnswer": "2nd Genitive",
+                "extraAnswers": [
+                    "1st Nominative",
+                    "6th Locative"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which case is 'stale'?",
+                "correctAnswer": "6th Locative",
+                "extraAnswers": [
+                    "2nd Genitive",
+                    "4th Accusative"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which word is in the Vocative case for 'Tomas'?",
+                "correctAnswer": "Tomai!",
+                "extraAnswers": [
+                    "Tome!",
+                    "Tomo!"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "explanation",
+                "question": "'ė' Cases",
+                "explanation": "Let's look at words ending with 'ė':<br><br>1 (Nom.) - kėd<b>ė</b><br>2 (Gen.) - kėd<b>ės</b><br>3 (Dat.) - kėd<b>ei</b><br>4 (Accus.) - kėd<b>ę</b><br>5 (Instr.) - kėd<b>e</b><br>6 (Loc.) - kėd<b>ėje</b><br>7 (Excl.) - kėd<b>e</b>"
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which case is 'kėdės'?",
+                "correctAnswer": "2nd Genitive",
+                "extraAnswers": [
+                    "1st Nominative",
+                    "4th Accusative"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which case is 'kėdėje'?",
+                "correctAnswer": "6th Locative",
+                "extraAnswers": [
+                    "2nd Genitive",
+                    "4th Accusative"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "inputText",
+                "question": "Write 'kėdė' in the Accusative case.",
+                "answers": [
+                    "kėdę"
+                ]
+            },
+            {
+                "type": "multiSelect",
+                "question": "Which case is <b>not</b> the Dative case for 'katė'?",
+                "correctAnswers": [
+                    "katę",
+                    "katėje"
+                ],
+                "shuffleAnswers": true,
+                "extraAnswers": [
+                    "katei"
+                ]
+            },
+            {
+                "type": "explanation",
+                "question": "Special Cases of Cases",
+                "explanation": "Some prepositions and verbs are always accompanied by a specific case (As if cases weren't hard enough)."
+            },
+            {
+                "type": "explanation",
+                "question": "Relative Location and Prepositions",
+                "explanation": "If we use common sense, the the phrases 'under a table', 'on the table' should utilise the Locative case, <u>however</u> these phrases invole Prepositions, so they're special.<br><br><b>Po</b> (under) + stalu  - Instrumental<br><b>Ant</b> (on) + stalo - Genitive<br><b>Į</b> (to) + stalą - Accusative (ends with letters 'ą', 'ę', 'į')<br><b>Po</b> kate<br><b>Ant</b> katės<br><b>Į</b> katę - Accusative"
+            },
+            {
+                "type": "multiChoice",
+                "question": "What case do you use with the Preposition 'Po' (Under)",
+                "correctAnswer": "Instrumentative (5th)",
+                "extraAnswers": [
+                    "Nominative (1st)",
+                    "Exclamatory (7th)"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiChoice",
+                "question": "What case do you use with the Preposition 'Į' (to)",
+                "correctAnswer": "Accusative (4th)",
+                "extraAnswers": [
+                    "Nominative (1st)",
+                    "Genitive (2nd)"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiChoice",
+                "question": "What case do you use with the Preposition 'Ant' (On)",
+                "correctAnswer": "Genitive (2nd)",
+                "extraAnswers": [
+                    "Nominative (1st)",
+                    "Accusative (4th)"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which phrase is <b>incorrect</b>",
+                "correctAnswer": "Po stale",
+                "extraAnswers": [
+                    "Po stalu",
+                    "Po kėde"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which case do you use with the Preposition 'Į'?",
+                "correctAnswer": "Accusative (5th)",
+                "extraAnswers": [
+                    "Locative (6th)",
+                    "Genitive (2nd)"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "inputText",
+                "question": "Finish the senctence: <br>An orange is under the table <br?'Apelsinas____'",
+                "answers": [
+                    "yra po stalu",
+                    "po stalu"
+                ]
+            },
+            {
+                "type": "inputText",
+                "question": "Finish the sentence with a Preposition: <br>I am going to the shop. <br>'Aš einu __ parduotuvę.",
+                "answers": [
+                    "į"
+                ]
+            },
+            {
+                "type": "explanation",
+                "question": "Special Verbs and Cases",
+                "explanation": "Some special verbs are also only used with specific cases.<br><br>Aš noriu (I want + Genitive (2nd)<br>Man reikia (I need) + Genitive<br>You could add the words 'for myself' to both verbs, the 2nd case satisfies the Possession property<br><br>Aš noriu <b>katino</b> (I want a cat)<br>Man reikia <b>kėdės</b> (I need a chair)"
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which case do you use 'noriu' with?",
+                "correctAnswer": "Genitive (2nd)",
+                "extraAnswers": [
+                    "Nominative (1st)",
+                    "Instrumental (5th)"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "inputText",
+                "question": "Write: 'I need a house'",
+                "answers": [
+                    "Man reikia namo."
+                ]
+            },
+            {
+                "type": "inputText",
+                "question": "Write: 'chair' in the Accusative (4th) case",
+                "answers": [
+                    "kėdę"
+                ]
+            },
+            {
+                "type": "inputText",
+                "question": "Write: 'chair' in the Nominative (1st) case",
+                "answers": [
+                    "kėdė"
+                ]
+            },
+            {
+                "type": "multiChoice",
+                "question": "Consider the sentence: <br>An orange is under the table.<br> Which case would you use to describe 'table' ",
+                "correctAnswer": "Instrumentative (5th) - stalu",
+                "extraAnswers": [
+                    "Accusative (4th) - stalą",
+                    "Genitive (2nd) - stalo"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiChoice",
+                "question": "Consider the sentence: <br>Simona wants an orange<br> Which case would you use to describe 'orange' ",
+                "correctAnswer": "Genitive (2nd) - apelsino",
+                "extraAnswers": [
+                    "Accusative (4th) - apelsiną",
+                    "Nominative (1st) - apelsinas"
+                ],
+                "shuffleAnswers": true
+            },{
+                "type": "inputText",
+                "question": "Write: 'In the cat (male)'",
+                "answers": [
+                    "katine"
+                ]
+            },{
+                "type": "inputText",
+                "question": "Write: 'In the cat (female)'",
+                "answers": [
+                    "katėje"
+                ]
+            },{
+                "type": "multiSelect",
+                "question": "In which phrase would you use the Genitive case (2nd)?",
+                "correctAnswers": [
+                    "Aš noriu ___","Ant ____"
+                ],
+                "shuffleAnswers": true,
+                "extraAnswers": [
+                    "Po ____"                ]
+            },
+            {
+                "type": "multiChoice",
+                "question": "Which word is in the Nominative (1st) case?",
+                "correctAnswer": "Namas",
+                "extraAnswers": [
+                    "Labas",
+                    "Kėdės" 
+                ],
+                "shuffleAnswers": true
+            }
+        ]
     }
 ]
