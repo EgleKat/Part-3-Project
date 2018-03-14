@@ -114,12 +114,12 @@ function validateExercise(exercises) {
             //check the correct answer based on the exercise type
             switch (currentExercise.type) {
                 case "inputText":
-                    var isUserCorrect = checkAnswer(correctAnswer);
-                    displayAnswerMessage(isUserCorrect, exLessDiv);
+                    var userCorrectIncorrectObj = checkAnswer(correctAnswer);
+                    displayAnswerMessage(userCorrectIncorrectObj, exLessDiv);
                     currentUserLesson.exercises.push({
                         "exercise": currentExerciseNumber,
                         "answer": currentAnswer,
-                        "correct": isUserCorrect
+                        "correct": userCorrectIncorrectObj.isUserCorrect
                     });
                     maxPointsPerLesson++;
                     break;
@@ -215,10 +215,17 @@ function checkAnswer(correctAnswer) {
         case "inputText":
             var answers = reformatPunctuation(currentExercise.answers.slice(0));
             var userAnswer = reformatPunctuation([currentAnswer])[0];
-            console.log(answers + "  " + userAnswer);
+            var answerScore = {};
             for (var i = 0; i < answers.length; i++) {
-                if (userAnswer.toLowerCase().trim() === answers[i].toLowerCase().trim())
-                    return true;
+                var editDistance = getEditDistance((userAnswer.toLowerCase().trim()), (answers[i].toLowerCase().trim()));
+                console.log(editDistance);
+                if (editDistance <= 1) {
+                    answerScore.isUserCorrect = true;
+                    answerScore.distance = editDistance;
+                    return answerScore;
+                }
+                // if (userAnswer.toLowerCase().trim() === answers[i].toLowerCase().trim())
+                //   return true;
             }
             return false;
             break;
@@ -384,7 +391,14 @@ function displayAnswerMessage(correctness, div) {
     currentAnswer = undefined;
 }
 
-function displaySimpleAnswerMessage(isUserCorrect, div) {
+function displaySimpleAnswerMessage(correctness, div) {
+    var isUserCorrect;
+    if (currentExercise.type === 'inputText') {
+        isUserCorrect = correctness.isUserCorrect;
+    }
+    else {
+        isUserCorrect = correctness;
+    }
     //TODO move this, it shouldn't be in this method
     if (isUserCorrect) {
         correctExercises++;
@@ -398,7 +412,13 @@ function displaySimpleAnswerMessage(isUserCorrect, div) {
 
     if (isUserCorrect) {
         userAnswerDiv.setAttribute("class", "alert alert-success show");
-        userAnswerText = "Correct";
+        console.log(currentExercise.type + correctness.distance);
+
+        if (currentExercise.type === 'inputText' && correctness.distance > 0) {
+            userAnswerText = "Correct with TYPO";
+        }
+        else
+            userAnswerText = "Correct";
     }
     else {
         userAnswerDiv.setAttribute("class", "alert alert-danger show");
