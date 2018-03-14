@@ -359,6 +359,8 @@ function displayLessonStats() {
     });
     buttonDiv.appendChild(finishButton);
     mainDiv.appendChild(buttonDiv);
+    playLessonAudio(true);
+
 }
 
 function displayInfoAlert(text) {
@@ -400,6 +402,7 @@ function displayAnswerMessage(correctness, div) {
     else {
         displayComplexAnswerMessage(correctness, div);
     }
+
     currentAnswer = undefined;
 }
 
@@ -450,6 +453,8 @@ function displaySimpleAnswerMessage(correctness, div) {
     userAnswerText = userAnswerText + ": " + currentAnswer;
     var t1 = document.createTextNode(userAnswerText);
     userAnswerDiv.appendChild(t1);
+    //Play sound
+    playExerciseAudio(isUserCorrect);
 
 
 }
@@ -457,7 +462,7 @@ function displaySimpleAnswerMessage(correctness, div) {
 function displayComplexAnswerMessage(usersAnswers, div) {
 
     correctExercises = correctExercises + usersAnswers.usersCorrectAnswers.length - usersAnswers.usersIncorrectAnswers.length;;
-
+    var isUserCorrect = false;
     //create alert div
     var correctAlertDiv = document.createElement("div");
     correctAlertDiv.setAttribute("role", "alert");
@@ -476,9 +481,10 @@ function displayComplexAnswerMessage(usersAnswers, div) {
         correctAlertDiv.appendChild(t);
         div.appendChild(correctAlertDiv);
 
+        isUserCorrect = true;
     }
 
-    //If the user didn't get any answers incorrect, don't show it 
+    //If the user didn't get any answers incorrect, don't show 'Incorrect' 
     if (usersAnswers.usersIncorrectAnswers.length > 0 || (typeof usersAnswers.usersIncorrectAnswers === 'undefined')) {
         incorrectAlertDiv.setAttribute("class", "alert alert-danger fade show");
         var text = "  Incorrect:  " + usersAnswers.usersIncorrectAnswers;
@@ -496,7 +502,11 @@ function displayComplexAnswerMessage(usersAnswers, div) {
         var t = document.createTextNode(text);
         allCorrectAnswersDiv.appendChild(t);
         div.appendChild(allCorrectAnswersDiv);
+    } else {
+        playExerciseAudio(isUserCorrect);
+
     }
+
 
 
 
@@ -534,4 +544,22 @@ function removeExplanations(lsn) {
     });
     newLsn.exercises = shuffle(newLsn.exercises);
     return newLsn;
+}
+
+function playExerciseAudio(correct) {
+    var audio;
+    if (correct) {
+        audio = new Audio('audio/correct.mp3');
+        audio.play();
+    } else {
+        audio = new Audio('audio/incorrect2.mp3');
+        audio.play();
+    }
+}
+
+function playLessonAudio(finishedLesson) {
+    if (finishedLesson) {
+        audio = new Audio('audio/finish.wav');
+        audio.play();
+    }
 }
