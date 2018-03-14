@@ -66,6 +66,20 @@ function displayLessonMenu(lessons) {
                 else
                     countDiv.innerHTML = ("Recent progress: " + countCorrect + " / " + maxCount);
 
+                //Add a repeat lesson with only questions button
+                var repeatQuestions = document.createElement("button");
+                repeatQuestions.innerHTML = "Redo Questions Only";
+                repeatQuestions.className = "repeatButton btn";
+
+                repeatQuestions.addEventListener("click", (function (lesson2) {
+                    return function () {
+                        onMenu = false;
+                        loadLesson(lesson2);
+                    };
+                })(removeExplanations(lesson)));
+                lessonButtonDiv.appendChild(repeatQuestions);
+
+
                 break;
             }
         }
@@ -192,7 +206,6 @@ function displayExercise(exercises) {
                 //an array of correct answers
                 correctAnswer = currentExercise.correctAnswers;
                 //set the answer variable to be an array
-                console.log("current answer set to array");
                 currentAnswer = [];
                 break;
         }
@@ -218,7 +231,6 @@ function checkAnswer(correctAnswer) {
             var answerScore = {};
             for (var i = 0; i < answers.length; i++) {
                 var editDistance = getEditDistance((userAnswer.toLowerCase().trim()), (answers[i].toLowerCase().trim()));
-                console.log(editDistance);
                 if (editDistance <= 1) {
                     answerScore.isUserCorrect = true;
                     answerScore.distance = editDistance;
@@ -412,8 +424,6 @@ function displaySimpleAnswerMessage(correctness, div) {
 
     if (isUserCorrect) {
         userAnswerDiv.setAttribute("class", "alert alert-success show");
-        console.log(currentExercise.type + correctness.distance);
-
         if (currentExercise.type === 'inputText' && correctness.distance > 0) {
             userAnswerText = "Correct with TYPO";
         }
@@ -505,4 +515,23 @@ function displayTimeoutMessage() {
     });
     $('#timerModal').modal({ backdrop: 'static', keyboard: false });
 
+}
+/**
+ * Take a lesson object and return a lesson object where all explanations are removed from the exercises array
+ * @param {obj} lsn 
+ */
+function removeExplanations(lsn) {
+    var newLsn = JSON.parse(JSON.stringify(lsn));
+    newLsn.exercises = [];
+    Object.keys(lsn).forEach(function (key, index) {
+        if (key === 'exercises') {
+            for (var i = 0; i < lsn[key].length; i++) {
+                if (lsn[key][i].type !== 'explanation') {
+                    newLsn.exercises.push(lsn.exercises[i]);
+                }
+            }
+        }
+    });
+    newLsn.exercises = shuffle(newLsn.exercises);
+    return newLsn;
 }
