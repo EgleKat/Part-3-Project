@@ -251,7 +251,7 @@
             },
             {
                 "type": "multiChoice",
-                "question": "Ji yra Simona",
+                "question": "Translate: 'Ji yra Simona'",
                 "correctAnswer": "She is Simona",
                 "extraAnswers": [
                     "They are called Simona",
@@ -926,27 +926,32 @@
                     "Nominative (1st) - apelsinas"
                 ],
                 "shuffleAnswers": true
-            },{
+            },
+            {
                 "type": "inputText",
                 "question": "Write: 'In the cat (male)'",
                 "answers": [
                     "katine"
                 ]
-            },{
+            },
+            {
                 "type": "inputText",
                 "question": "Write: 'In the cat (female)'",
                 "answers": [
                     "katėje"
                 ]
-            },{
+            },
+            {
                 "type": "multiSelect",
                 "question": "In which phrase would you use the Genitive case (2nd)?",
                 "correctAnswers": [
-                    "Aš noriu ___","Ant ____"
+                    "Aš noriu ___",
+                    "Ant ____"
                 ],
                 "shuffleAnswers": true,
                 "extraAnswers": [
-                    "Po ____"                ]
+                    "Po ____"
+                ]
             },
             {
                 "type": "multiChoice",
@@ -954,7 +959,54 @@
                 "correctAnswer": "Namas",
                 "extraAnswers": [
                     "Labas",
-                    "Kėdės" 
+                    "Kėdės"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiChoice",
+                "question": "Finish the sentence: 'Bulvė yra ___ stalu' (The potato is under a table)",
+                "correctAnswer": "po",
+                "extraAnswers": [
+                    "už",
+                    "ant"
+                ],
+                "shuffleAnswers": true
+            },
+            {
+                "type": "multiSelect",
+                "question": "Select all cases that don't exist in the Lithuanian language.",
+                "correctAnswers": [
+                    "Monative",
+                    "Incurative"
+                ],
+                "shuffleAnswers": true,
+                "extraAnswers": [
+                    "Dative",
+                    "Instrumentative"
+                ]
+            },
+            {
+                "type": "multiSelect",
+                "question": "Select all propositions:",
+                "correctAnswers": [
+                    "po",
+                    "ant",
+                    "į"
+                ],
+                "shuffleAnswers": true,
+                "extraAnswers": [
+                    "ą",
+                    "Mes"
+                ]
+            },
+            {
+                "type": "multiChoice",
+                "question": "What Preposition would you use with the Instrumentative case?",
+                "correctAnswer": "po",
+                "extraAnswers": [
+                    "ant",
+                    "už"
                 ],
                 "shuffleAnswers": true
             }

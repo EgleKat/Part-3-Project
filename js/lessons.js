@@ -266,12 +266,13 @@ function checkAnswer(correctAnswer) {
  */
 function reformatPunctuation(changeMe) {
     for (var i = 0; i < changeMe.length; i++) {
-        changeMe[i] = changeMe[i].replace(',', " ");
-        changeMe[i] = changeMe[i].replace('.', "");
-        changeMe[i] = changeMe[i].replace('-', " ");
-        changeMe[i] = changeMe[i].replace('–', " ");
-        changeMe[i] = changeMe[i].replace(/\s+/, " ");
+        changeMe[i] = changeMe[i].replace(/,/g, " ");
+        changeMe[i] = changeMe[i].replace(/\./g, "");
+        changeMe[i] = changeMe[i].replace(/-/g, " ");
+        changeMe[i] = changeMe[i].replace(/–/g, " ");
+        changeMe[i] = changeMe[i].replace(/\s+/g, " ");
     }
+    console.log(changeMe);
     return changeMe;
 }
 
@@ -504,7 +505,6 @@ function displayComplexAnswerMessage(usersAnswers, div) {
         div.appendChild(allCorrectAnswersDiv);
     } else {
         playExerciseAudio(isUserCorrect);
-
     }
 
 
@@ -515,7 +515,7 @@ function displayComplexAnswerMessage(usersAnswers, div) {
 function displayTimeoutMessage() {
     var timer = new Timer();
 
-    timer.start({ countdown: true, startValues: { seconds: 2 } });
+    timer.start({ countdown: true, startValues: { seconds: 90 } });
     $('#timerModal .values').html(timer.getTimeValues().toString());
     timer.addEventListener('secondsUpdated', function (e) {
         $('#timerModal .values').html(timer.getTimeValues().toString());

@@ -145,8 +145,6 @@ function displayMultiSelect(question, answers, div, shuffleAnswers) {
         checkBoxInput.onclick = function () {
             //if box is checked, add value to current answers
             if (this.checked){
-                console.log(currentAnswer);
-
                 window.currentAnswer.push(this.value);}
             else
                 //if box is unchecked, remove value from current answers
