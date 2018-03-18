@@ -97,6 +97,7 @@ function loadLesson(lesson) {
     numberOfMaxHints = lesson.hints;
     currentExerciseNumber = 0;
     changeHintHeading();
+    collapseAllHints();
     changeMainHeading(lesson.lessonName);
     var exercises = lesson.exercises;
     currentUserLesson = new finishedLesson(lesson.lessonName, lesson.lessonID, [], 0, 0);
