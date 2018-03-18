@@ -442,10 +442,10 @@ function displaySimpleAnswerMessage(correctness, div) {
     div.appendChild(userAnswerDiv);
 
     //yellow alert message
-    if (currentExercise.type === 'inputText' || !isUserCorrect) {
+    if ((currentExercise.type === 'inputText' && isUserCorrect && currentExercise.answers.length > 1) || !isUserCorrect) {
         allCorrectAnswersDiv.setAttribute("class", "alert alert-warning show");
         allCorrectAnswersDiv.setAttribute("role", "alert");
-        var text = "  Correct Answer:  " + correctAnswer;
+        var text = "  Correct Answer(s):  " + correctAnswer;
         //add text to alert
         var t = document.createTextNode(text);
         allCorrectAnswersDiv.appendChild(t);
