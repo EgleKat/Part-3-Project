@@ -7,7 +7,7 @@
             {
                 "type": "explanation",
                 "question": "The Alphabet",
-                "explanation": "Before starting to learn Lithuanian, you should know that the Lithuanian uses the latin alphabet, however it has a few additional letters.<br>-'ą' is a long and 'a' is a short sound (l<b>u</b>ck - short, <b>a</b>rchitecture - long)<br>Same goes for: <br>-'ę' and 'e' (<b>e</b>nvelope - short, el<b>a</b>stic - long)<br>-'į' and 'i' (<b>i</b>mp - short, <b>ea</b>ting - long)<br>-'ų' and 'u' (y<b>ou</b> - long, p<b>u</b>t - short)<br>And then there are: <br>'č' (<b>ch</b>ips), 'ž' (plea<b>ss</b>ure), 'š' (<b>sh</b>ampoo),  'ė' (nightm<b>are</b>), 'y' (mach<b>i</b>ne), 'ū' (m<b>oo</b>n)<br>"
+                "explanation": "Before starting to learn Lithuanian, you should know that the Lithuanian uses the latin alphabet, however it has a few additional letters.<br>-'ą' is a long and 'a' is a short sound (l<b>u</b>ck - short, <b>a</b>rchitecture - long)<br>Same goes for: <br>-'ę' and 'e' (<b>e</b>nvelope - short, el<b>a</b>stic - long)<br>-'į' and 'i' (<b>i</b>mp - short, <b>ea</b>ting - long)<br>-'ų' and 'u' (y<b>ou</b> - long, p<b>u</b>t - short)<br>And then there are: <br>'č' (<b>ch</b>ips), 'ž' (plea<b>s</b>ure), 'š' (<b>sh</b>ampoo),  'ė' (nightm<b>are</b>), 'y' (mach<b>i</b>ne), 'ū' (m<b>oo</b>n)<br>"
             },
             {
                 "type": "explanation",
@@ -114,7 +114,7 @@
             {
                 "type": "explanation",
                 "question": "Introduce Yourself",
-                "explanation": " <i>Labas, mano vardas yra</i><br>Hello, my name is<br><br><i>Aš esu<i/><br>I am<br><br><i>Koks yra tavo vardas?</i><br>What is your name?"
+                "explanation": " <i>Labas, mano vardas yra</i><br>Hello, my name is<br><br><i>Aš esu</i><br>I am<br><br><i>Koks yra tavo vardas?</i><br>What is your name?"
             },
             {
                 "type": "multiChoice",
@@ -135,7 +135,7 @@
             },
             {
                 "type": "multiChoice",
-                "question": "my, yours - ?",
+                "question": "my, your - ?",
                 "correctAnswer": "mano, tavo",
                 "extraAnswers": [
                     "tavo, mano",
@@ -247,7 +247,7 @@
             {
                 "type": "explanation",
                 "question": "Personal Pronouns",
-                "explanation": "There are 8 personal pronouns in Lithuanian: <br>Aš - I<br Tu - You<br> Jis - He<br> Ji - She<br><br> Mes - We<br>Jūs - You<br> Jie - They<br>Jos - They (group of only females)"
+                "explanation": "There are 8 personal pronouns in Lithuanian: <br>Aš - I<br> Tu - You<br> Jis - He<br> Ji - She<br><br> Mes - We<br>Jūs - You (Plural)<br> Jie - They<br>Jos - They (group of only females)"
             },
             {
                 "type": "multiChoice",
@@ -619,7 +619,7 @@
             },
             {
                 "type": "inputText",
-                "question": "Finish the sentence: Aš gyvenu _____(in the city)",
+                "question": "Complete the sentence: <br>Aš gyvenu _____(in the city)",
                 "answers": [
                     "mieste"
                 ]
@@ -663,7 +663,7 @@
             },
             {
                 "type": "multiSelect",
-                "question": "Which phrases don't have any words with the Exclamatory case in them?",
+                "question": "Which phrases <b>don't</b> have any words with the Exclamatory case in them?",
                 "correctAnswers": [
                     "Mama eina",
                     "Aš - Petras"
@@ -744,7 +744,7 @@
             },
             {
                 "type": "multiChoice",
-                "question": "Which word is in the Vocative case for 'Tomas'?",
+                "question": "Which word is in the Exclamatory case for 'Tomas'?",
                 "correctAnswer": "Tomai!",
                 "extraAnswers": [
                     "Tome!",
@@ -804,7 +804,7 @@
             {
                 "type": "explanation",
                 "question": "Relative Location and Prepositions",
-                "explanation": "If we use common sense, the the phrases 'under a table', 'on the table' should utilise the Locative case, <u>however</u> these phrases invole Prepositions, so they're special.<br><br><b>Po</b> (under) + stalu  - Instrumental<br><b>Ant</b> (on) + stalo - Genitive<br><b>Į</b> (to) + stalą - Accusative (ends with letters 'ą', 'ę', 'į')<br><b>Po</b> kate<br><b>Ant</b> katės<br><b>Į</b> katę - Accusative"
+                "explanation": "If we use common sense, the the phrases 'under a table', 'on the table' should utilise the Locative case, <u>however</u> these phrases involve Prepositions, so they're special.<br><br><b>Po</b> (under) + stalu  - Instrumental<br><b>Ant</b> (on) + stalo - Genitive<br><b>Į</b> (to) + stalą - Accusative (ends with letters 'ą', 'ę', 'į')<br><b>Po</b> kate<br><b>Ant</b> katės<br><b>Į</b> katę - Accusative"
             },
             {
                 "type": "multiChoice",
@@ -858,7 +858,7 @@
             },
             {
                 "type": "inputText",
-                "question": "Finish the senctence: <br>An orange is under the table <br?'Apelsinas____'",
+                "question": "Complete the sentence: <br>An orange is under the table <br>'Apelsinas____'",
                 "answers": [
                     "yra po stalu",
                     "po stalu"
@@ -866,7 +866,7 @@
             },
             {
                 "type": "inputText",
-                "question": "Finish the sentence with a Preposition: <br>I am going to the shop. <br>'Aš einu __ parduotuvę.",
+                "question": "Complete the sentence with a Preposition: <br>I am going to the shop. <br>'Aš einu __ parduotuvę.",
                 "answers": [
                     "į"
                 ]
@@ -909,11 +909,12 @@
             },
             {
                 "type": "multiChoice",
-                "question": "Consider the sentence: <br>An orange is under the table.<br> Which case would you use to describe 'table' ",
-                "correctAnswer": "Instrumentative (5th) - stalu",
+                "question": "Consider the sentence: <br>An orange is on the table.<br> Which case would you use to describe 'table' ",
+                "correctAnswer": "Genitive (2nd) - stalo",
                 "extraAnswers": [
                     "Accusative (4th) - stalą",
-                    "Genitive (2nd) - stalo"
+                    "Instrumentative (5th) - stalu"
+                    
                 ],
                 "shuffleAnswers": true
             },
@@ -965,17 +966,17 @@
             },
             {
                 "type": "multiChoice",
-                "question": "Finish the sentence: 'Bulvė yra ___ stalu' (The potato is under a table)",
-                "correctAnswer": "po",
+                "question": "Complete the sentence: <br>'Bulvė yra ___ stalu' <br>(The potato is on the table)",
+                "correctAnswer": "ant",
                 "extraAnswers": [
                     "už",
-                    "ant"
+                    "po"
                 ],
                 "shuffleAnswers": true
             },
             {
                 "type": "multiSelect",
-                "question": "Select all cases that don't exist in the Lithuanian language.",
+                "question": "Select all cases that <b>don't</b> exist in the Lithuanian language.",
                 "correctAnswers": [
                     "Monative",
                     "Incurative"
@@ -988,7 +989,7 @@
             },
             {
                 "type": "multiSelect",
-                "question": "Select all propositions:",
+                "question": "Select all prepositions:",
                 "correctAnswers": [
                     "po",
                     "ant",
