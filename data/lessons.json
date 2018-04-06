@@ -414,7 +414,7 @@
             {
                 "type": "explanation",
                 "question": "Dative - Naudininkas",
-                "explanation": "The Dative case describes the purpose or the addressee. <br>e.g. Aš perku maistą <b>katinui</b>. (I buy food <b>for the cat</b>.)<br><b>Obuoliai</b> mamai. (Apples <b>for mum</b>.) <br> The most common endings are 'ui' (katin<b>ui</b>), 'ei' (kat<b>ei</b>), 'ai'(mam<b>ai</b>) "
+                "explanation": "The Dative case describes the purpose or the addressee. <br>e.g. Aš perku maistą <b>katinui</b>. (I buy food <b>for the cat</b>.)<br>Obuoliai <b>mamai</b>. (Apples <b>for mum</b>.) <br> The most common endings are 'ui' (katin<b>ui</b>), 'ei' (kat<b>ei</b>), 'ai'(mam<b>ai</b>) "
             },
             {
                 "type": "multiChoice",
@@ -786,7 +786,7 @@
             },
             {
                 "type": "multiSelect",
-                "question": "Which case is <b>not</b> the Dative case for 'katė'?",
+                "question": "Which cases is <b>not</b> the Dative case for 'katė'?",
                 "correctAnswers": [
                     "katę",
                     "katėje"
@@ -966,7 +966,7 @@
             },
             {
                 "type": "multiChoice",
-                "question": "Complete the sentence: <br>'Bulvė yra ___ stalu' <br>(The potato is on the table)",
+                "question": "Complete the sentence: <br>'Bulvė yra ___ stalo' <br>(The potato is on the table)",
                 "correctAnswer": "ant",
                 "extraAnswers": [
                     "už",
