@@ -1,6 +1,6 @@
 var mainDiv = document.getElementById('content');
 var finishedLessonsCount = 0;
-var isCurrentPaneExercise = false;  //exercise - true, validation - false
+var isCurrentPaneExercise = false;  //exercise true, validation - false
 var correctExercises = 0;
 var maxPointsPerLesson = 0;
 var onMenu = true;
@@ -273,7 +273,6 @@ function reformatPunctuation(changeMe) {
         changeMe[i] = changeMe[i].replace(/–/g, " ");
         changeMe[i] = changeMe[i].replace(/\s+/g, " ");
     }
-    console.log(changeMe);
     return changeMe;
 }
 
@@ -463,7 +462,11 @@ function displaySimpleAnswerMessage(correctness, div) {
 
 function displayComplexAnswerMessage(usersAnswers, div) {
 
-    correctExercises = correctExercises + usersAnswers.usersCorrectAnswers.length - usersAnswers.usersIncorrectAnswers.length;;
+    var scoreForExercise = usersAnswers.usersCorrectAnswers.length- usersAnswers.usersIncorrectAnswers.length;
+    if(scoreForExercise<0)
+        scoreForExercise = 0;
+    correctExercises = correctExercises + scoreForExercise;
+   
     var isUserCorrect = false;
     //create alert div
     var correctAlertDiv = document.createElement("div");
